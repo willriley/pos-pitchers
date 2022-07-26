@@ -1,6 +1,6 @@
 import smtplib, ssl, time
 from email.mime.text import MIMEText
-from datetime import datetime, timedelta
+from datetime import datetime, timezone, timedelta
 import statsapi
 
 SLEEP_TIME = 60
@@ -21,8 +21,7 @@ def parse_game(game):
     }
 
 def is_blowout(game):
-    return (game['inning'] >= INNING_THRESHOLD
-            and abs(game['home_score'] - game['away_score']) >= RUN_THRESHOLD)
+  return (INNING_THRESHOLD <= game['inning'] < 9 and abs(game['home_score'] - game['away_score']) >= RUN_THRESHOLD)
 
 def send_email(game):
     password = 'ufzfqtyatptkwsny'
@@ -37,29 +36,33 @@ def send_email(game):
     msg['To'] = ', '.join(EMAILS)
 
     context = ssl.create_default_context()
-    with smtplib.SMTP(SMTP_SERVER) as server:
-        server.starttls(context=context)
-        server.login(SENDER_EMAIL, password)
-        server.sendmail(SENDER_EMAIL, EMAILS, msg.as_string())
-
+    try:
+        with smtplib.SMTP(SMTP_SERVER) as server:
+            server.starttls(context=context)
+            server.login(SENDER_EMAIL, password)
+            server.sendmail(SENDER_EMAIL, EMAILS, msg.as_string())
+    except Exception as e:
+        print(e)
 
 already_notified_games = set()
-already_notified_reset_date = datetime.now() + timedelta(days=1)
+already_notified_reset_date = datetime.now() + timedelta(hours=12)
+eastern_time = timezone(timedelta(hours=-4))
 
 while True:
-    dt = datetime.now() - timedelta(days=4)
+    dt = datetime.now(eastern_time)
     today = dt.strftime('%m/%d/%Y')
 
     games_today = statsapi.schedule(start_date=today, end_date=today)
     for g in games_today:
-        # TODO: change to 'status' == 'Live'
-        if g['status'] != 'Final' and g['game_id'] not in already_notified_games:
+        if g['status'] == 'In Progress' and g['game_id'] not in already_notified_games:
             game = parse_game(g)
             if is_blowout(game):
                 already_notified_games.add(g['game_id'])
                 send_email(game)
+            else:
+                print('non blowout', game['inning'], 'score', game['home_score'], game['away_score'])
 
-    if dt > already_notified_reset_date:
+    if datetime.now() > already_notified_reset_date:
         already_notified_games.clear()
         already_notified_reset_date = datetime.now() + timedelta(days=1)
 
