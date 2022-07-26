@@ -46,10 +46,10 @@ def send_email(game):
 
 already_notified_games = set()
 already_notified_reset_date = datetime.now() + timedelta(hours=12)
-eastern_time = timezone(timedelta(hours=-4))
+pacific_time = timezone(timedelta(hours=-7))
 
 while True:
-    dt = datetime.now(eastern_time)
+    dt = datetime.now(pacific_time)
     today = dt.strftime('%m/%d/%Y')
 
     games_today = statsapi.schedule(start_date=today, end_date=today)
