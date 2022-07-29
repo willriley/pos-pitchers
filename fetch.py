@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 from dataclasses import dataclass
 
 START_INNING = 6
+RUN_THRESHOLD = 8
 
 # run with number of days specified
 # returns a csv where columns are fields we care about
@@ -13,25 +14,30 @@ START_INNING = 6
 @dataclass
 class GameData:
     """Class for keeping track of a game's data."""
+    date: str = ''
     home_team: str = ''
     away_team: str = ''
     is_pos: bool = False
     pos_name: str = ''
+    pos_team: str = ''  # 'Home' or 'Away' (or '' if no pos)
     pos_runs: int = 0
     pos_num_pitches: int = 0
-    home_score_after: dict[int, int] = {} # from inning to score
+    # map from inning to home score, starting at START_INNING until end of game
+    home_score_after: dict[int, int] = {} #
     away_score_after: dict[int, int] = {}
-    home_pitchers_after: dict[int, int] = {} # from inning to num pitchers
+    # map from inning to num pitchers, starting at START_INNING until end of game
+    home_pitchers_after: dict[int, int] = {}
     away_pitchers_after: dict[int, int] = {}
 
     def should_log(self) -> bool:
     """Whether we should log this game."""
-        return True
+        # check if score difference is >= RUN_THRESHOLD
+        is_blowout = False
+        for i in range(START_INNING, START_INNING + len(self.home_score_after)):
+            is_blowout |= (abs(home_score_after[i] - away_score_after[i]) >= RUN_THRESHOLD)
 
-    @staticmethod
-    def from_boxscore(boxscore) -> GameData:
-    """Parses raw boxscore into a GameData object. Throws an exception if it
-    can't parse the game correctly."""
+        return is_blowout or self.is_pos
+
 
 def parse_line(linescore, innings):
     away_score_after = {}
@@ -42,14 +48,41 @@ def parse_line(linescore, innings):
 
     away_score, home_score = 0, 0
     for i in range(START_INNING, innings):
-        away_score += int(lines[0][i])
-        home_score += int(lines[1][i])
+        away_score += int(lines[0][i-1])
+        home_score += int(lines[1][i-1])
         away_score_after[i] = away_score
         home_score_after[i] = home_score
 
     print(away_score_after)
     print(home_score_after)
     return (home_score_after, away_score_after)
+
+
+def parse_pitchers(boxscore):
+    # TODO: double check math
+    def helper(pitchers, pitchers_after):
+        innings, outs = 0, 0
+        pitchers = 0
+
+        for pitcher in pitchers[1:]:
+            ip = pitcher['ip'].split('.')
+            innings += int(ip[0])
+            outs += int(ip[1])
+
+            if outs >= 3:
+                outs = outs % 3
+
+            pitchers += 1
+            if innings >= START_INNING and innings not in pitchers_after:
+                pitchers_after[innings] = pitchers
+
+    away_pitchers_after = {}
+    home_pitchers_after = {}
+    helper(boxscore['awayPitchers'], away_pitchers_after)
+    helper(boxscore['homePitchers'], home_pitchers_after)
+
+    return (home_pitchers_after, away_pitchers_after)
+
 
 def is_pos(player_id):
     players = statsapi.lookup_player(player_id)
@@ -60,6 +93,7 @@ def is_pos(player_id):
     pos = player['primaryPosition']['abbreviation']
     return pos != 'P' and pos != 'TWP'
 
+
 def get_pos(boxscore):
     def find_pos(pitchers):
         for pitcher in pitchers[1:]:
@@ -68,7 +102,11 @@ def get_pos(boxscore):
         return None
 
     away_pos = find_pos(boxscore['awayPitchers'])
-    return away_pos if away_pos != None else find_pos(boxscore['homePitchers'])
+    if away_pos:
+        return ('Away', away_pos)
+
+    home_pos = find_pos(boxscore['homePitchers'])
+    return ('Home', home_pos)
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-d', '--days', type=int, default=30)
@@ -80,33 +118,34 @@ start = now - timedelta(days=parser.parse_args().days)
 start_date = start.strftime('%m/%d/%Y')
 
 games = statsapi.schedule(start_date=start_date, end_date=today)
+filtered_games = []
+
 for game in games:
     if game['status'] != 'Final':
         gid = game['game_id']
+        game_data = GameData(game['game_date'], game['home_name'], game['away_name'])
 
-        # num of runs after 6/7/8/9
-        # - fetch line score and parse (take num innings as param)
         linescore = statsapi.linescore(gid)
-        home_score_after, away_score_after = parse_line(linescore, game['current_inning'])
+        game_data.home_score_after, game_data.away_score_after = parse_line(linescore, game['current_inning'])
 
         boxscore = statsapi.boxscore_data(gid)
+        pos_team, pos = get_pos(boxscore)
+        game_data.is_pos = pos != None
 
-        # 'away'
-        # 'homePitchers'/'awayPitchers' (skip first entry)
-        # -> lookup 'personId' to determine if pos
-        # ->
+        if is_pos:
+            # only logs the first pos found; doesn't log multiple pos
+            game_data.pos_team = pos_team
+            game_data.pos_name = pos['name']
+            game_data.pos_runs = pos['r']
+            game_data.pos_num_pitches = pos['p']
 
+        game_data.home_pitchers_after, game_data.away_pitchers_after = parse_pitchers(boxscore)
 
+        if game_data.should_log():
+            filtered_games.append(game_data)
+            # log to csv
 
-
-    # check pos
-    # get player ID, look up player primary position != 'TWP' != 'P'
-
-    # pos name, runs and num pitches
-    # if pos, get their name, runs, and num pitches
-
-    # num pitchers — running count per team
-
+# TODO: exceptions, csv logging, debugging
 
 # pprint.pp(games)
 
@@ -120,6 +159,6 @@ for game in games:
 # TODO:
 
 # game 662357 10 innings
-extra_inning_scoreline = statsapi.linescore(662357)
-print(extra_inning_scoreline)
-parse_line(extra_inning_scoreline, 10)
+# extra_inning_scoreline = statsapi.linescore(662357)
+# print(extra_inning_scoreline)
+# parse_line(extra_inning_scoreline, 10)
