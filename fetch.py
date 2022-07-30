@@ -12,26 +12,25 @@ import csv
 
 START_INNING = 6
 RUN_THRESHOLD = 8
-CSV_HEADERS = ['date', 'home', 'away', 'pos?', 'pos team', 'pos name', 'pos runs',
+CSV_HEADERS = ['date', 'game id', 'home', 'away', 'pos?', 'pos team', 'pos name', 'pos runs',
                'pos num pitches', 'score 6', 'score 7', 'score 8',
-               'score 9', 'final score', 'pitchers 6', 'pitchers 7',
-               'pitchers 8', 'pitchers 9', 'final pitchers']
+               'score 9', 'pitchers 6', 'pitchers 7', 'pitchers 8', 'pitchers 9']
 
 # 'score 6' => (home score after 6, away score after 6)
-# 'final pitchers' => (home total pitchers used, away total pitchers used)
+# 'pitchers 7' => (home pitchers used after 7, away pitchers used after 7)
 
 
 @dataclass
 class GameData:
     """Class for keeping track of a game's data."""
     date: str = ''
-    game_id: int = 0
+    id: int = 0
     home_team: str = ''
     away_team: str = ''
     is_pos: bool = False
     pos_name: str = ''
     pos_team: str = ''  # 'Home' or 'Away' (or '' if no pos)
-    pos_runs: int = 0
+    pos_runs: int = 0   # number of runs the pos pitcher gave up; NOT the number of runs in the whole inning
     pos_num_pitches: int = 0
     innings = int = 9
     # map from inning to home score, starting at START_INNING until end of game
@@ -54,47 +53,50 @@ class GameData:
     def to_csv_row(self):
         """CSV row representation of this GameData object."""
         def check(val):
-            return val if val else 'null'
+            return val if val else '-'
 
-        return [self.date, self.home_team, self.away_team, str(self.is_pos)[0],
-                check(self.pos_team), check(self.pos_name), self.pos_runs,
-                self.pos_num_pitches,
+        return [self.date, self.id, self.home_team, self.away_team, str(self.is_pos)[0],
+                check(self.pos_team), check(self.pos_name),
+                self.pos_runs if self.is_pos else '-',
+                self.pos_num_pitches if self.is_pos else '-',
                 "({0}-{1})".format(self.home_score_after[6],
-                                 self.away_score_after[6]),
+                                   self.away_score_after[6]),
                 "({0}-{1})".format(self.home_score_after[7],
-                                 self.away_score_after[7]),
+                                   self.away_score_after[7]),
                 "({0}-{1})".format(self.home_score_after[8],
-                                 self.away_score_after[8]),
+                                   self.away_score_after[8]),
                 "({0}-{1})".format(self.home_score_after[9],
-                                 self.away_score_after[9]),
-                "({0}-{1})".format(self.home_score_after[self.innings],
-                                 self.away_score_after[self.innings]),
+                                   self.away_score_after[9]),
                 "({0}-{1})".format(self.home_pitchers_after[6],
-                                 self.away_pitchers_after[6]),
+                                   self.away_pitchers_after[6]),
                 "({0}-{1})".format(self.home_pitchers_after[7],
-                                 self.away_pitchers_after[7]),
+                                   self.away_pitchers_after[7]),
                 "({0}-{1})".format(self.home_pitchers_after[8],
-                                 self.away_pitchers_after[8]),
+                                   self.away_pitchers_after[8]),
                 "({0}-{1})".format(self.home_pitchers_after[9],
-                                 self.away_pitchers_after[9]),
-                "({0}-{1})".format(self.home_pitchers_after[self.innings], self.away_pitchers_after[self.innings])]
+                                   self.away_pitchers_after[9])]
 
 
 def parse_line(linescore, innings):
     away_score_after = {}
     home_score_after = {}
 
-    lines = [line.split() for line in linescore.splitlines()[1:]]
-    lines = [[s for s in line if s.isdigit()] for line in lines]
-
+    lines = [line for line in linescore.splitlines()]
+    header = lines[0]
+    inning, inning_idx = 1, header.find('1')
     away_score, home_score = 0, 0
-    for i in range(1, innings+1):
-        away_score += int(lines[0][i-1])
-        home_score += int(lines[1][i-1])
 
-        if i >= START_INNING:
-            away_score_after[i] = away_score
-            home_score_after[i] = home_score
+    while inning <= innings:
+        away_score += int(lines[1][inning_idx:inning_idx+2])
+        home_score += int(lines[2][inning_idx:inning_idx+2])
+
+        if inning >= START_INNING:
+            away_score_after[inning] = away_score
+            home_score_after[inning] = home_score
+
+        inning_idx += 2
+        inning += 1
+
     return (home_score_after, away_score_after)
 
 
@@ -154,14 +156,15 @@ def get_pos(boxscore):
         return ('Away', away_pos)
 
     home_pos = find_pos(boxscore['homePitchers'])
-    return ('Home', home_pos)
+    if home_pos:
+        return ('Home', home_pos)
+    return ('', None)
 
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-d', '--days', type=int, default=30)
 parser.add_argument('-f', '--file', type=str, default='games.csv')
 parsed_args = parser.parse_args()
-# pdb.set_trace()
 
 now = datetime.now()
 today = now.strftime('%m/%d/%Y')
@@ -205,5 +208,6 @@ with open(parsed_args.file, 'w', encoding='UTF8') as f:
     writer.writerow(CSV_HEADERS)
 
     game_rows = [game.to_csv_row() for game in filtered_games]
-    pdb.set_trace()
-    writer.writerows(game_rows)
+    # pdb.set_trace()
+    for game_row in game_rows:
+        writer.writerow(game_row)
