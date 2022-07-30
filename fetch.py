@@ -12,9 +12,9 @@ import csv
 
 START_INNING = 6
 RUN_THRESHOLD = 8
-CSV_HEADERS = ['date', 'game id', 'home', 'away', 'pos?', 'pos team', 'pos name', 'pos runs',
-               'pos num pitches', 'score 6', 'score 7', 'score 8',
-               'score 9', 'pitchers 6', 'pitchers 7', 'pitchers 8', 'pitchers 9']
+CSV_HEADERS = ['date', 'game id', 'home', 'away', 'pos?', 'pos team', 'pos name', 'pos runs', 'runs in pos inning',
+               'pos num pitches', 'score 6 diff', 'score 7 diff', 'score 8 diff',
+               'score 9 diff', 'pitchers 6', 'pitchers 7', 'pitchers 8', 'pitchers 9']
 
 # 'score 6' => (home score after 6, away score after 6)
 # 'pitchers 7' => (home pitchers used after 7, away pitchers used after 7)
@@ -30,7 +30,9 @@ class GameData:
     is_pos: bool = False
     pos_name: str = ''
     pos_team: str = ''  # 'Home' or 'Away' (or '' if no pos)
-    pos_runs: int = 0   # number of runs the pos pitcher gave up; NOT the number of runs in the whole inning
+    # number of runs the pos pitcher gave up; NOT the number of runs in the whole inning
+    pos_runs: int = 0
+    runs_in_pos_inning: int = 0  # number of runs
     pos_num_pitches: int = 0
     innings = int = 9
     # map from inning to home score, starting at START_INNING until end of game
@@ -58,15 +60,12 @@ class GameData:
         return [self.date, self.id, self.home_team, self.away_team, str(self.is_pos)[0],
                 check(self.pos_team), check(self.pos_name),
                 self.pos_runs if self.is_pos else '-',
+                self.runs_in_pos_inning if self.is_pos else '-',
                 self.pos_num_pitches if self.is_pos else '-',
-                "({0}-{1})".format(self.home_score_after[6],
-                                   self.away_score_after[6]),
-                "({0}-{1})".format(self.home_score_after[7],
-                                   self.away_score_after[7]),
-                "({0}-{1})".format(self.home_score_after[8],
-                                   self.away_score_after[8]),
-                "({0}-{1})".format(self.home_score_after[9],
-                                   self.away_score_after[9]),
+                abs(self.home_score_after[6] - self.away_score_after[6]),
+                abs(self.home_score_after[7] - self.away_score_after[7]),
+                abs(self.home_score_after[8] - self.away_score_after[8]),
+                abs(self.home_score_after[9] - self.away_score_after[9]),
                 "({0}-{1})".format(self.home_pitchers_after[6],
                                    self.away_pitchers_after[6]),
                 "({0}-{1})".format(self.home_pitchers_after[7],
@@ -100,8 +99,8 @@ def parse_line(linescore, innings):
     return (home_score_after, away_score_after)
 
 
-def parse_pitchers(boxscore, total_innings):
-    def helper(pitchers, pitchers_after):
+def parse_pitchers(boxscore, total_innings, pos_id):
+    def helper(pitchers, pitchers_after, pos_inning):
         innings, outs = 0, 0
         num_pitchers, last_insert = 0, 0
 
@@ -113,6 +112,9 @@ def parse_pitchers(boxscore, total_innings):
             if outs >= 3:
                 innings += 1
                 outs = outs % 3
+
+            if pitcher['personId'] == pos_id and pos_inning == None:
+                pos_inning = innings
 
             num_pitchers += 1
             if innings >= START_INNING and innings > last_insert:
@@ -128,10 +130,11 @@ def parse_pitchers(boxscore, total_innings):
 
     away_pitchers_after = {}
     home_pitchers_after = {}
-    helper(boxscore['awayPitchers'], away_pitchers_after)
-    helper(boxscore['homePitchers'], home_pitchers_after)
+    pos_inning_pitched = None
+    helper(boxscore['awayPitchers'], away_pitchers_after, pos_inning_pitched)
+    helper(boxscore['homePitchers'], home_pitchers_after, pos_inning_pitched)
 
-    return (home_pitchers_after, away_pitchers_after)
+    return (home_pitchers_after, away_pitchers_after, pos_inning_pitched)
 
 
 def is_pos(player_id):
@@ -197,8 +200,13 @@ for game in games:
             game_data.pos_runs = pos['r']
             game_data.pos_num_pitches = pos['p']
 
-        game_data.home_pitchers_after, game_data.away_pitchers_after = parse_pitchers(
-            boxscore, game_data.innings)
+        pos_id = None if not pos else pos['personId']
+        game_data.home_pitchers_after, game_data.away_pitchers_after, pos_inning_pitched = parse_pitchers(
+            boxscore, game_data.innings, pos_id)
+
+        if pos_inning_pitched:
+            game_data.runs_in_pos_inning = (game_data.home_score_after[pos_inning_pitched] - game_data.pos_inning_pitched[pos_inning_pitched-1]) + (
+                game_data.away_score_after[pos_inning_pitched] - game_data.away_score_after[pos_inning_pitched-1])
 
         if game_data.should_log():
             filtered_games.append(game_data)
