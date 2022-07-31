@@ -132,9 +132,8 @@ def parse_pitchers(boxscore, total_innings, pos_id):
 
     away_pitchers_after = {}
     home_pitchers_after = {}
-    pos_inning_pitched = None
     pos_inning_pitched = helper(
-        boxscore['awayPitchers'], away_pitchers_after, pos_inning_pitched)
+        boxscore['awayPitchers'], away_pitchers_after, None)
     pos_inning_pitched = helper(
         boxscore['homePitchers'], home_pitchers_after, pos_inning_pitched)
 
@@ -181,7 +180,7 @@ start_date = start.strftime('%m/%d/%Y')
 
 games = statsapi.schedule(start_date=start_date, end_date=today)
 filtered_games = []
-pdb.set_trace()
+# pdb.set_trace()
 
 for game in games:
     if game['status'] == 'Final':
