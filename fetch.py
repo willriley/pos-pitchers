@@ -128,11 +128,15 @@ def parse_pitchers(boxscore, total_innings, pos_id):
         for inning in range(last_insert+1, total_innings+1):
             pitchers_after[inning] = pitchers_after[last_insert]
 
+        return pos_inning
+
     away_pitchers_after = {}
     home_pitchers_after = {}
     pos_inning_pitched = None
-    helper(boxscore['awayPitchers'], away_pitchers_after, pos_inning_pitched)
-    helper(boxscore['homePitchers'], home_pitchers_after, pos_inning_pitched)
+    pos_inning_pitched = helper(
+        boxscore['awayPitchers'], away_pitchers_after, pos_inning_pitched)
+    pos_inning_pitched = helper(
+        boxscore['homePitchers'], home_pitchers_after, pos_inning_pitched)
 
     return (home_pitchers_after, away_pitchers_after, pos_inning_pitched)
 
@@ -177,6 +181,7 @@ start_date = start.strftime('%m/%d/%Y')
 
 games = statsapi.schedule(start_date=start_date, end_date=today)
 filtered_games = []
+pdb.set_trace()
 
 for game in games:
     if game['status'] == 'Final':
@@ -205,10 +210,11 @@ for game in games:
             boxscore, game_data.innings, pos_id)
 
         if pos_inning_pitched:
-            game_data.runs_in_pos_inning = (game_data.home_score_after[pos_inning_pitched] - game_data.pos_inning_pitched[pos_inning_pitched-1]) + (
+            game_data.runs_in_pos_inning = (game_data.home_score_after[pos_inning_pitched] - game_data.home_score_after[pos_inning_pitched-1]) + (
                 game_data.away_score_after[pos_inning_pitched] - game_data.away_score_after[pos_inning_pitched-1])
 
         if game_data.should_log():
+            print(game_data)
             filtered_games.append(game_data)
 
 with open(parsed_args.file, 'w', encoding='UTF8') as f:
@@ -216,6 +222,5 @@ with open(parsed_args.file, 'w', encoding='UTF8') as f:
     writer.writerow(CSV_HEADERS)
 
     game_rows = [game.to_csv_row() for game in filtered_games]
-    # pdb.set_trace()
     for game_row in game_rows:
         writer.writerow(game_row)
