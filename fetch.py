@@ -12,12 +12,10 @@ import csv
 
 START_INNING = 6
 RUN_THRESHOLD = 8
-CSV_HEADERS = ['date', 'game id', 'home', 'away', 'pos?', 'pos team', 'pos name', 'pos runs', 'runs in pos inning',
-               'pos num pitches', 'score 6 diff', 'score 7 diff', 'score 8 diff',
-               'score 9 diff', 'pitchers 6', 'pitchers 7', 'pitchers 8', 'pitchers 9']
-
-# 'score 6' => (home score after 6, away score after 6)
-# 'pitchers 7' => (home pitchers used after 7, away pitchers used after 7)
+CSV_HEADERS = ['date', 'game id', 'home', 'away', 'pos?', 'pos team', 'pos name',
+               'pos runs', 'runs in pos inning', 'pos num pitches', 'diff at decision pt',
+               'score 6 diff', 'score 7 diff', 'score 8 diff', 'score 9 diff',
+               'final score', 'pitchers 6', 'pitchers 7', 'pitchers 8', 'pitchers 9']
 
 
 @dataclass
@@ -32,7 +30,11 @@ class GameData:
     pos_team: str = ''  # 'Home' or 'Away' (or '' if no pos)
     # number of runs the pos pitcher gave up; NOT the number of runs in the whole inning
     pos_runs: int = 0
-    runs_in_pos_inning: int = 0  # number of runs
+    pos_inning_pitched: int = 0
+    runs_in_pos_inning: int = 0  # number of runs in the inning where the pos pitched
+    # if pos came in, records the run diff right before they came in.
+    # if pos didn't come in, records the run diff when the pos would've come in.
+    run_diff_at_decision_point: int = 0
     pos_num_pitches: int = 0
     innings = int = 9
     # map from inning to home score, starting at START_INNING until end of game
@@ -52,6 +54,36 @@ class GameData:
 
         return is_blowout or self.is_pos
 
+    def get_diff_at_decision_point(self):
+        home_inning, away_innning = None, None
+
+        # if is pos, fetch inning that they pitched and team
+        # away team -> pitched in the bottom of inning x
+        # score diff is (away_score_after[x] - home_score_after[x-1])
+        # home team -> pitched in the top of inning x
+        # score diff was (away_score_after[x-1] - home_score_after[x-1])
+        if self.is_pos:
+            if self.pos_team == 'Home':
+                home_inning = away_innning = self.pos_inning_pitched - 1
+            elif self.pos_team == 'Away':
+                home_inning = self.pos_inning_pitched - 1
+                away_innning = self.pos_inning_pitched
+        else:
+            # if no pos, get the team who's being blown out
+            # away team -> assume they'd put pos in at bottom of 8th
+            # score diff is (away_score_after[8] - home_score_after[7])
+            # home team -> assume they'd put pos in at top of 9th
+            # score diff is (away_score_after[8] - home_score_after[8])
+            blown_out_team = 'Home' if self.home_score_after[
+                self.innings] > self.away_score_after[self.innings] else 'Away'
+            if blown_out_team == 'Home':
+                home_inning = away_innning = 8
+            else:
+                home_inning, away_innning = 7, 8
+
+        self.run_diff_at_decision_point = abs(
+            self.home_score_after[home_inning] - self.away_score_after[away_innning])
+
     def to_csv_row(self):
         """CSV row representation of this GameData object."""
         def check(val):
@@ -62,10 +94,13 @@ class GameData:
                 self.pos_runs if self.is_pos else '-',
                 self.runs_in_pos_inning if self.is_pos else '-',
                 self.pos_num_pitches if self.is_pos else '-',
+                self.run_diff_at_decision_point,
                 abs(self.home_score_after[6] - self.away_score_after[6]),
                 abs(self.home_score_after[7] - self.away_score_after[7]),
                 abs(self.home_score_after[8] - self.away_score_after[8]),
                 abs(self.home_score_after[9] - self.away_score_after[9]),
+                "({0}-{1})".format(self.home_score_after[self.innings],
+                                   self.away_score_after[self.innings]),
                 "({0}-{1})".format(self.home_pitchers_after[6],
                                    self.away_pitchers_after[6]),
                 "({0}-{1})".format(self.home_pitchers_after[7],
@@ -209,8 +244,11 @@ for game in games:
             boxscore, game_data.innings, pos_id)
 
         if pos_inning_pitched:
+            game_data.pos_inning_pitched = pos_inning_pitched
             game_data.runs_in_pos_inning = (game_data.home_score_after[pos_inning_pitched] - game_data.home_score_after[pos_inning_pitched-1]) + (
                 game_data.away_score_after[pos_inning_pitched] - game_data.away_score_after[pos_inning_pitched-1])
+
+        game_data.get_diff_at_decision_point()
 
         if game_data.should_log():
             print(game_data)
