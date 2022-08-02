@@ -75,7 +75,7 @@ class GameData:
             # home team -> assume they'd put pos in at top of 9th
             # score diff is (away_score_after[8] - home_score_after[8])
             blown_out_team = 'Home' if self.home_score_after[
-                self.innings] > self.away_score_after[self.innings] else 'Away'
+                self.innings] < self.away_score_after[self.innings] else 'Away'
             if blown_out_team == 'Home':
                 home_inning = away_innning = 8
             else:
