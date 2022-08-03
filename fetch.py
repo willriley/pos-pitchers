@@ -78,8 +78,12 @@ class GameData:
                 self.innings] < self.away_score_after[self.innings] else 'Away'
             if blown_out_team == 'Home':
                 home_inning = away_innning = 8
+                self.runs_in_pos_inning = (self.home_score_after[9]-self.home_score_after[8]) + (
+                    self.away_score_after[9] - self.away_score_after[8])
             else:
                 home_inning, away_innning = 7, 8
+                self.runs_in_pos_inning = (self.home_score_after[8]-self.home_score_after[7]) + (
+                    self.away_score_after[8] - self.away_score_after[8])
 
         self.run_diff_at_decision_point = abs(
             self.home_score_after[home_inning] - self.away_score_after[away_innning])
@@ -92,7 +96,7 @@ class GameData:
         return [self.date, self.id, self.home_team, self.away_team, str(self.is_pos)[0],
                 check(self.pos_team), check(self.pos_name),
                 self.pos_runs if self.is_pos else '-',
-                self.runs_in_pos_inning if self.is_pos else '-',
+                self.runs_in_pos_inning,
                 self.pos_num_pitches if self.is_pos else '-',
                 self.run_diff_at_decision_point,
                 abs(self.home_score_after[6] - self.away_score_after[6]),
