@@ -12,7 +12,7 @@ import csv
 
 START_INNING = 6
 RUN_THRESHOLD = 8
-CSV_HEADERS = ['date', 'game id', 'home', 'away', 'pos?', 'pos team', 'pos name',
+CSV_HEADERS = ['date', 'game id', 'home', 'away', 'pos?', 'pos loc', 'pos team', 'pos name',
                'pos runs', 'runs in pos inning', 'pos num pitches', 'diff at decision pt',
                'score 6 diff', 'score 7 diff', 'score 8 diff', 'score 9 diff',
                'final score', 'pitchers 6', 'pitchers 7', 'pitchers 8', 'pitchers 9']
@@ -25,9 +25,10 @@ class GameData:
     id: int = 0
     home_team: str = ''
     away_team: str = ''
+    pos_team: str = ''
     is_pos: bool = False
     pos_name: str = ''
-    pos_team: str = ''  # 'Home' or 'Away' (or '' if no pos)
+    pos_loc: str = ''  # 'Home' or 'Away' (or '' if no pos)
     # number of runs the pos pitcher gave up; NOT the number of runs in the whole inning
     pos_runs: int = 0
     pos_inning_pitched: int = 0
@@ -38,11 +39,11 @@ class GameData:
     pos_num_pitches: int = 0
     innings = int = 9
     # map from inning to home score, starting at START_INNING until end of game
-    home_score_after: dict[int, int] = field(default_factory=dict)
-    away_score_after: dict[int, int] = field(default_factory=dict)
+    home_score_after: dict = field(default_factory=dict)
+    away_score_after: dict = field(default_factory=dict)
     # map from inning to num pitchers, starting at START_INNING until end of game
-    home_pitchers_after: dict[int, int] = field(default_factory=dict)
-    away_pitchers_after: dict[int, int] = field(default_factory=dict)
+    home_pitchers_after: dict = field(default_factory=dict)
+    away_pitchers_after: dict = field(default_factory=dict)
 
     def should_log(self) -> bool:
         """Whether we should log this game."""
@@ -63,9 +64,9 @@ class GameData:
         # home team -> pitched in the top of inning x
         # score diff was (away_score_after[x-1] - home_score_after[x-1])
         if self.is_pos:
-            if self.pos_team == 'Home':
+            if self.pos_loc == 'Home':
                 home_inning = away_innning = self.pos_inning_pitched - 1
-            elif self.pos_team == 'Away':
+            elif self.pos_loc == 'Away':
                 home_inning = self.pos_inning_pitched - 1
                 away_innning = self.pos_inning_pitched
         else:
@@ -94,7 +95,7 @@ class GameData:
             return val if val else '-'
 
         return [self.date, self.id, self.home_team, self.away_team, str(self.is_pos)[0],
-                check(self.pos_team), check(self.pos_name),
+                self.pos_loc, self.pos_team, check(self.pos_name),
                 self.pos_runs if self.is_pos else '-',
                 self.runs_in_pos_inning,
                 self.pos_num_pitches if self.is_pos else '-',
@@ -105,14 +106,10 @@ class GameData:
                 abs(self.home_score_after[9] - self.away_score_after[9]),
                 "({0}-{1})".format(self.home_score_after[self.innings],
                                    self.away_score_after[self.innings]),
-                "({0}-{1})".format(self.home_pitchers_after[6],
-                                   self.away_pitchers_after[6]),
-                "({0}-{1})".format(self.home_pitchers_after[7],
-                                   self.away_pitchers_after[7]),
-                "({0}-{1})".format(self.home_pitchers_after[8],
-                                   self.away_pitchers_after[8]),
-                "({0}-{1})".format(self.home_pitchers_after[9],
-                                   self.away_pitchers_after[9])]
+                self.home_pitchers_after[6] if self.pos_loc == 'Home' else self.away_pitchers_after[6],
+                self.home_pitchers_after[7] if self.pos_loc == 'Home' else self.away_pitchers_after[7],
+                self.home_pitchers_after[8] if self.pos_loc == 'Home' else self.away_pitchers_after[8],
+                self.home_pitchers_after[9] if self.pos_loc == 'Home' else self.away_pitchers_after[9]]
 
 
 def parse_line(linescore, innings):
@@ -189,22 +186,22 @@ def is_pos(player_id):
     return pos != 'P' and pos != 'TWP'
 
 
-def get_pos(boxscore):
+def get_pos(boxscore, winner):
     def find_pos(pitchers):
         for pitcher in pitchers[1:]:
             if is_pos(pitcher['personId']):
                 return pitcher
         return None
 
-    away_pos = find_pos(boxscore['awayPitchers'])
-    if away_pos:
-        return ('Away', away_pos)
-
-    home_pos = find_pos(boxscore['homePitchers'])
-    if home_pos:
-        return ('Home', home_pos)
-    return ('', None)
-
+    if winner == 'Home':
+        away_pos = find_pos(boxscore['awayPitchers'])
+        if away_pos:
+            return ('Away', away_pos)
+    else:
+        home_pos = find_pos(boxscore['homePitchers'])
+        if home_pos:
+            return ('Home', home_pos)
+    return ("Away" if winner == "Home" else "Home", None)
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-d', '--days', type=int, default=30)
@@ -229,16 +226,27 @@ for game in games:
 
         linescore = statsapi.linescore(gid)
         game_data.innings = game['current_inning']
+        if game_data.innings < 9:
+            # Rain shortened games
+            continue
+        
         game_data.home_score_after, game_data.away_score_after = parse_line(
             linescore, game_data.innings)
 
         boxscore = statsapi.boxscore_data(gid)
-        pos_team, pos = get_pos(boxscore)
+        winner = ''
+        if game_data.home_score_after[game_data.innings] > game_data.away_score_after[game_data.innings]:
+            winner = 'Home'
+        else:
+            winner = 'Away'
+
+        pos_loc, pos = get_pos(boxscore, winner)
         game_data.is_pos = pos != None
+        game_data.pos_loc = pos_loc
+        game_data.pos_team = game['home_name'] if pos_loc == 'Home' else game['away_name']
 
         if game_data.is_pos:
             # only logs the first pos found; doesn't log multiple pos
-            game_data.pos_team = pos_team
             game_data.pos_name = pos['name']
             game_data.pos_runs = pos['r']
             game_data.pos_num_pitches = pos['p']

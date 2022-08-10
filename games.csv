@@ -1,0 +1,67 @@
+date,game id,home,away,pos?,pos loc,pos team,pos name,pos runs,runs in pos inning,pos num pitches,diff at decision pt,score 6 diff,score 7 diff,score 8 diff,score 9 diff,final score,pitchers 6,pitchers 7,pitchers 8,pitchers 9
+2022-06-20,661121,Pittsburgh Pirates,Chicago Cubs,F,Away,Chicago Cubs,-,-,0,-,11,7,11,11,11,(12-1),2,3,3,3
+2022-06-22,661107,Pittsburgh Pirates,Chicago Cubs,T,Home,Pittsburgh Pirates,"Castillo, D",4,8,33,9,9,9,9,9,(5-14),2,2,2,3
+2022-06-22,662359,Oakland Athletics,Seattle Mariners,T,Home,Oakland Athletics,Neuse,0,0,12,9,8,9,9,9,(0-9),2,3,4,5
+2022-06-25,662083,San Francisco Giants,Cincinnati Reds,F,Away,Cincinnati Reds,-,-,0,-,7,8,8,7,7,(9-2),2,3,4,4
+2022-06-26,662061,San Francisco Giants,Cincinnati Reds,F,Home,San Francisco Giants,-,-,0,-,7,9,7,7,7,(3-10),3,4,5,6
+2022-06-27,663016,Cleveland Guardians,Minnesota Twins,T,Home,Cleveland Guardians,Clement,2,3,23,9,7,9,9,10,(1-11),1,3,3,4
+2022-06-27,661968,St. Louis Cardinals,Miami Marlins,F,Away,Miami Marlins,-,-,2,-,7,7,7,9,9,(9-0),2,3,3,3
+2022-06-28,662521,New York Mets,Houston Astros,F,Home,New York Mets,-,-,1,-,9,9,9,9,8,(1-9),3,3,4,4
+2022-06-30,661579,Philadelphia Phillies,Atlanta Braves,T,Away,Atlanta Braves,Ford,2,2,15,8,9,8,10,10,(14-4),3,4,5,5
+2022-06-30,663199,Chicago Cubs,Cincinnati Reds,T,Away,Cincinnati Reds,Schrock,5,7,26,6,7,8,11,8,(15-7),3,4,5,5
+2022-07-01,661725,Toronto Blue Jays,Tampa Bay Rays,T,Away,Tampa Bay Rays,"Phillips, B",0,0,14,7,6,7,7,7,(9-2),3,3,4,4
+2022-07-01,663038,Cincinnati Reds,Atlanta Braves,F,Home,Cincinnati Reds,-,-,1,-,7,1,4,7,8,(1-9),1,2,3,4
+2022-07-01,661104,Pittsburgh Pirates,Milwaukee Brewers,T,Home,Pittsburgh Pirates,VanMeter,2,2,18,15,8,8,15,17,(2-19),3,3,4,5
+2022-07-02,661836,Toronto Blue Jays,Tampa Bay Rays,F,Home,Toronto Blue Jays,-,-,0,-,6,8,6,6,6,(5-11),2,3,4,5
+2022-07-02,662964,Cleveland Guardians,New York Yankees,T,Home,Cleveland Guardians,Clement,2,2,19,7,6,6,7,9,(4-13),3,3,3,4
+2022-07-02,662890,Houston Astros,Los Angeles Angels,F,Away,Los Angeles Angels,-,-,0,-,8,6,8,8,8,(9-1),2,3,4,4
+2022-07-03,662099,San Francisco Giants,Chicago White Sox,T,Home,San Francisco Giants,Wynns,2,5,16,10,5,5,10,9,(4-13),4,4,5,6
+2022-07-04,662270,San Diego Padres,Seattle Mariners,F,Home,San Diego Padres,-,-,2,-,8,7,7,8,6,(2-8),3,3,4,5
+2022-07-05,661578,Philadelphia Phillies,Washington Nationals,T,Away,Washington Nationals,"Escobar, A",0,0,12,11,11,11,11,11,(11-0),5,5,6,6
+2022-07-05,662905,Detroit Tigers,Cleveland Guardians,T,Away,Cleveland Guardians,Leon,0,1,17,8,9,9,8,7,(11-4),3,4,4,4
+2022-07-05,661426,Chicago White Sox,Minnesota Twins,T,Home,Chicago White Sox,"Harrison, J",0,0,9,6,4,6,6,6,(2-8),2,3,4,5
+2022-07-05,661187,Milwaukee Brewers,Chicago Cubs,T,Home,Milwaukee Brewers,Brosseau,0,1,15,6,6,6,6,5,(3-8),2,2,2,3
+2022-07-06,662328,Pittsburgh Pirates,New York Yankees,T,Home,Pittsburgh Pirates,VanMeter,6,6,27,10,4,5,10,16,(0-16),1,2,4,5
+2022-07-07,662508,New York Mets,Miami Marlins,F,Away,Miami Marlins,-,-,0,-,10,10,10,10,10,(10-0),3,4,5,5
+2022-07-08,663202,Boston Red Sox,New York Yankees,T,Home,Boston Red Sox,Bradley Jr.,1,1,30,6,4,5,6,7,(5-12),2,3,3,4
+2022-07-08,661522,Atlanta Braves,Washington Nationals,T,Away,Washington Nationals,"Escobar, A",2,4,12,6,6,6,10,10,(12-2),3,3,4,4
+2022-07-09,661411,Chicago White Sox,Detroit Tigers,T,Away,Detroit Tigers,Clemens,0,0,14,8,8,8,8,8,(8-0),2,3,4,4
+2022-07-09,662663,Kansas City Royals,Cleveland Guardians,T,Home,Kansas City Royals,"Taylor, M",2,2,37,10,11,10,10,12,(1-13),4,4,5,5
+2022-07-10,662198,San Diego Padres,San Francisco Giants,T,Home,San Diego Padres,Batten,1,1,9,11,8,10,11,12,(0-12),3,3,3,4
+2022-07-11,661814,Texas Rangers,Oakland Athletics,F,Away,Oakland Athletics,-,-,0,-,2,6,8,2,2,(10-8),3,3,4,4
+2022-07-12,662108,San Francisco Giants,Arizona Diamondbacks,T,Away,Arizona Diamondbacks,"Kelly, C",3,3,22,10,8,10,13,13,(13-0),3,4,5,5
+2022-07-14,661675,Minnesota Twins,Chicago White Sox,T,Home,Minnesota Twins,Gordon,3,4,19,8,7,8,8,10,(2-12),3,4,4,5
+2022-07-14,661101,Chicago Cubs,New York Mets,F,Home,Chicago Cubs,-,-,0,-,8,6,6,8,8,(0-8),2,2,2,3
+2022-07-15,661113,Colorado Rockies,Pittsburgh Pirates,F,Away,Pittsburgh Pirates,-,-,2,-,9,5,9,11,11,(13-2),2,3,3,3
+2022-07-15,663385,Los Angeles Angels,Los Angeles Dodgers,F,Home,Los Angeles Angels,-,-,1,-,9,8,8,9,8,(1-9),3,4,4,4
+2022-07-16,661966,St. Louis Cardinals,Cincinnati Reds,F,Away,Cincinnati Reds,-,-,3,-,5,6,7,8,8,(11-3),4,6,7,7
+2022-07-16,662952,Cleveland Guardians,Detroit Tigers,T,Away,Detroit Tigers,"Castro, H",0,0,10,10,10,10,10,10,(10-0),4,5,6,6
+2022-07-16,661359,Miami Marlins,Philadelphia Phillies,F,Home,Miami Marlins,-,-,0,-,10,5,5,10,10,(0-10),2,3,3,4
+2022-07-16,661259,New York Yankees,Boston Red Sox,F,Away,Boston Red Sox,-,-,4,-,9,9,9,13,13,(14-1),3,4,6,6
+2022-07-17,661258,New York Yankees,Boston Red Sox,F,Away,Boston Red Sox,-,-,0,-,11,9,11,11,11,(13-2),7,8,9,9
+2022-07-17,661672,Minnesota Twins,Chicago White Sox,F,Home,Minnesota Twins,-,-,1,-,10,4,10,10,11,(0-11),3,5,6,7
+2022-07-17,662059,San Francisco Giants,Milwaukee Brewers,F,Away,Milwaukee Brewers,-,-,0,-,4,8,6,4,4,(9-5),2,3,3,3
+2022-07-21,661421,Miami Marlins,Texas Rangers,F,Home,Miami Marlins,-,-,2,-,6,5,5,6,8,(0-8),2,3,3,4
+2022-07-22,661560,Philadelphia Phillies,Chicago Cubs,T,Home,Philadelphia Phillies,Stubbs,5,6,25,9,6,6,9,13,(2-15),3,4,5,6
+2022-07-22,663222,Boston Red Sox,Toronto Blue Jays,T,Home,Boston Red Sox,"Sánchez, Y",1,1,15,22,23,22,22,23,(5-28),4,5,6,7
+2022-07-22,661504,Atlanta Braves,Los Angeles Angels,F,Away,Los Angeles Angels,-,-,1,-,7,0,7,8,7,(8-1),1,3,3,3
+2022-07-22,663306,Arizona Diamondbacks,Washington Nationals,F,Away,Washington Nationals,-,-,3,-,7,6,7,10,9,(10-1),2,3,4,4
+2022-07-23,661201,Milwaukee Brewers,Colorado Rockies,F,Away,Colorado Rockies,-,-,1,-,7,7,7,8,5,(9-4),2,2,3,3
+2022-07-24,661502,Atlanta Braves,Los Angeles Angels,F,Home,Atlanta Braves,-,-,0,-,8,8,7,8,8,(1-9),2,3,4,5
+2022-07-24,662901,Detroit Tigers,Minnesota Twins,T,Home,Detroit Tigers,Clemens,1,1,12,7,2,5,7,8,(1-9),3,4,6,7
+2022-07-24,662343,Oakland Athletics,Texas Rangers,F,Home,Oakland Athletics,-,-,3,-,6,10,10,6,3,(8-11),2,2,3,3
+2022-07-25,663046,Cincinnati Reds,Miami Marlins,T,Away,Miami Marlins,Astudillo,0,0,8,9,9,9,9,9,(11-2),3,3,4,4
+2022-07-25,662809,Detroit Tigers,San Diego Padres,F,Away,San Diego Padres,-,-,0,-,8,8,8,8,8,(12-4),3,4,5,5
+2022-07-28,661077,Colorado Rockies,Los Angeles Dodgers,T,Home,Colorado Rockies,Serven,0,0,8,13,11,13,13,13,(0-13),3,3,4,5
+2022-07-29,662745,Houston Astros,Seattle Mariners,T,Away,Seattle Mariners,Torrens,1,2,18,9,9,10,10,10,(11-1),4,5,6,6
+2022-07-29,662268,San Diego Padres,Minnesota Twins,T,Away,Minnesota Twins,Gordon,0,0,20,9,9,9,9,9,(10-1),2,3,4,4
+2022-08-02,662250,San Diego Padres,Colorado Rockies,F,Away,Colorado Rockies,-,-,2,-,6,4,6,8,8,(13-5),2,4,4,4
+2022-08-02,661496,Atlanta Braves,Philadelphia Phillies,F,Away,Philadelphia Phillies,-,-,3,-,9,8,9,12,12,(13-1),5,6,6,6
+2022-08-03,662552,Washington Nationals,New York Mets,F,Home,Washington Nationals,-,-,6,-,8,8,8,8,4,(5-9),2,3,4,5
+2022-08-03,662244,San Diego Padres,Colorado Rockies,F,Away,Colorado Rockies,-,-,0,-,8,8,8,8,8,(9-1),2,2,3,3
+2022-08-05,662564,Los Angeles Dodgers,San Diego Padres,T,Away,San Diego Padres,Batten,0,0,17,8,8,8,8,7,(8-1),2,3,4,4
+2022-08-06,662856,Detroit Tigers,Tampa Bay Rays,T,Away,Tampa Bay Rays,Chang,2,2,12,6,1,6,8,8,(9-1),1,2,3,3
+2022-08-06,661815,Texas Rangers,Chicago White Sox,F,Away,Chicago White Sox,-,-,0,-,8,4,8,8,8,(8-0),3,4,4,4
+2022-08-07,661558,Philadelphia Phillies,Washington Nationals,F,Away,Washington Nationals,-,-,5,-,7,6,7,12,12,(13-1),2,3,4,4
+2022-08-07,662648,Kansas City Royals,Boston Red Sox,F,Away,Boston Red Sox,-,-,6,-,4,4,4,10,8,(13-5),2,4,6,6
+2022-08-09,662979,Colorado Rockies,St. Louis Cardinals,F,Away,St. Louis Cardinals,-,-,0,-,11,9,11,11,11,(16-5),3,3,3,3
