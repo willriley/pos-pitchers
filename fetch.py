@@ -218,50 +218,49 @@ start = now - timedelta(days=parsed_args.days)
 start_date = start.strftime('%m/%d/%Y')
 
 games = statsapi.schedule(start_date=start_date, end_date=today)
-filtered_games = []
 # pdb.set_trace()
-
-for game in games:
-    if game['status'] == 'Final':
-        gid = game['game_id']
-        game_data = GameData(
-            game['game_date'], gid, game['home_name'], game['away_name'])
-
-        linescore = statsapi.linescore(gid)
-        game_data.innings = game['current_inning']
-        game_data.home_score_after, game_data.away_score_after = parse_line(
-            linescore, game_data.innings)
-
-        boxscore = statsapi.boxscore_data(gid)
-        pos_team, pos = get_pos(boxscore)
-        game_data.is_pos = pos != None
-
-        if game_data.is_pos:
-            # only logs the first pos found; doesn't log multiple pos
-            game_data.pos_team = pos_team
-            game_data.pos_name = pos['name']
-            game_data.pos_runs = pos['r']
-            game_data.pos_num_pitches = pos['p']
-
-        pos_id = None if not pos else pos['personId']
-        game_data.home_pitchers_after, game_data.away_pitchers_after, pos_inning_pitched = parse_pitchers(
-            boxscore, game_data.innings, pos_id)
-
-        if pos_inning_pitched:
-            game_data.pos_inning_pitched = pos_inning_pitched
-            game_data.runs_in_pos_inning = (game_data.home_score_after[pos_inning_pitched] - game_data.home_score_after[pos_inning_pitched-1]) + (
-                game_data.away_score_after[pos_inning_pitched] - game_data.away_score_after[pos_inning_pitched-1])
-
-        game_data.get_diff_at_decision_point()
-
-        if game_data.should_log():
-            print(game_data)
-            filtered_games.append(game_data)
 
 with open(parsed_args.file, 'w', encoding='UTF8') as f:
     writer = csv.writer(f)
     writer.writerow(CSV_HEADERS)
 
-    game_rows = [game.to_csv_row() for game in filtered_games]
-    for game_row in game_rows:
-        writer.writerow(game_row)
+    for game in games:
+        if game['status'] == 'Final':
+            gid = game['game_id']
+            game_data = GameData(
+                game['game_date'], gid, game['home_name'], game['away_name'])
+
+            linescore = statsapi.linescore(gid)
+            game_data.innings = game['current_inning']
+            if game_data.innings < 9:
+                # throw out rain-shortened games
+                continue
+
+            game_data.home_score_after, game_data.away_score_after = parse_line(
+                linescore, game_data.innings)
+
+            boxscore = statsapi.boxscore_data(gid)
+            pos_team, pos = get_pos(boxscore)
+            game_data.is_pos = pos != None
+
+            if game_data.is_pos:
+                # only logs the first pos found; doesn't log multiple pos
+                game_data.pos_team = pos_team
+                game_data.pos_name = pos['name']
+                game_data.pos_runs = pos['r']
+                game_data.pos_num_pitches = pos['p']
+
+            pos_id = None if not pos else pos['personId']
+            game_data.home_pitchers_after, game_data.away_pitchers_after, pos_inning_pitched = parse_pitchers(
+                boxscore, game_data.innings, pos_id)
+
+            if pos_inning_pitched:
+                game_data.pos_inning_pitched = pos_inning_pitched
+                game_data.runs_in_pos_inning = (game_data.home_score_after[pos_inning_pitched] - game_data.home_score_after[pos_inning_pitched-1]) + (
+                    game_data.away_score_after[pos_inning_pitched] - game_data.away_score_after[pos_inning_pitched-1])
+
+            game_data.get_diff_at_decision_point()
+
+            if game_data.should_log():
+                print(game_data)
+                writer.writerow(game_data.to_csv_row())
