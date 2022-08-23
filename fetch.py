@@ -14,7 +14,7 @@ START_INNING = 6
 RUN_THRESHOLD = 8
 CSV_HEADERS = ['date', 'game id', 'home', 'away', 'pos?', 'pos loc', 'pos team', 'pos name',
                'pos runs', 'runs in pos inning', 'pos num pitches', 'diff at decision pt',
-               'score 6 diff', 'score 7 diff', 'score 8 diff', 'score 9 diff',
+               'changed pitcher?', 'score 6 diff', 'score 7 diff', 'score 8 diff', 'score 9 diff',
                'final score', 'pitchers 6', 'pitchers 7', 'pitchers 8', 'pitchers 9']
 
 
@@ -37,6 +37,10 @@ class GameData:
     # if pos didn't come in, records the run diff when the pos would've come in.
     run_diff_at_decision_point: int = 0
     pos_num_pitches: int = 0
+    # if pos pitched, this field is meaningless.
+    # when pos didn't pitch, changed_pitcher is true if the pitcher from the previous inning
+    # stayed in for the pos inning.
+    changed_pitcher: bool = False
     innings = int = 9
     # map from inning to home score, starting at START_INNING until end of game
     home_score_after: dict = field(default_factory=dict)
@@ -81,10 +85,12 @@ class GameData:
                 home_inning = away_innning = 8
                 self.runs_in_pos_inning = (self.home_score_after[9]-self.home_score_after[8]) + (
                     self.away_score_after[9] - self.away_score_after[8])
+                self.changed_pitcher = self.home_pitchers_after[9] > self.home_pitchers_after[8]
             else:
                 home_inning, away_innning = 7, 8
                 self.runs_in_pos_inning = (self.home_score_after[8]-self.home_score_after[7]) + (
                     self.away_score_after[8] - self.away_score_after[8])
+                self.changed_pitcher = self.away_pitchers_after[8] > self.away_pitchers_after[7]    
 
         self.run_diff_at_decision_point = abs(
             self.home_score_after[home_inning] - self.away_score_after[away_innning])
@@ -100,6 +106,7 @@ class GameData:
                 self.runs_in_pos_inning,
                 self.pos_num_pitches if self.is_pos else '-',
                 self.run_diff_at_decision_point,
+                str(self.changed_pitcher)[0] if not self.is_pos else '-',
                 abs(self.home_score_after[6] - self.away_score_after[6]),
                 abs(self.home_score_after[7] - self.away_score_after[7]),
                 abs(self.home_score_after[8] - self.away_score_after[8]),
@@ -203,6 +210,7 @@ def get_pos(boxscore, winner):
             return ('Home', home_pos)
     return ("Away" if winner == "Home" else "Home", None)
 
+
 parser = argparse.ArgumentParser()
 parser.add_argument('-d', '--days', type=int, default=30)
 parser.add_argument('-f', '--file', type=str, default='games.csv')
@@ -229,7 +237,7 @@ for game in games:
         if game_data.innings < 9:
             # Rain shortened games
             continue
-        
+
         game_data.home_score_after, game_data.away_score_after = parse_line(
             linescore, game_data.innings)
 
