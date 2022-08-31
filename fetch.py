@@ -90,7 +90,7 @@ class GameData:
                 home_inning, away_innning = 7, 8
                 self.runs_in_pos_inning = (self.home_score_after[8]-self.home_score_after[7]) + (
                     self.away_score_after[8] - self.away_score_after[8])
-                self.changed_pitcher = self.away_pitchers_after[8] > self.away_pitchers_after[7]    
+                self.changed_pitcher = self.away_pitchers_after[8] > self.away_pitchers_after[7]
 
         self.run_diff_at_decision_point = abs(
             self.home_score_after[home_inning] - self.away_score_after[away_innning])
@@ -204,10 +204,17 @@ def get_pos(boxscore, winner):
         away_pos = find_pos(boxscore['awayPitchers'])
         if away_pos:
             return ('Away', away_pos)
+        home_pos = find_pos(boxscore['homePitchers'])
+        if home_pos:
+            return ('Home', home_pos)
     else:
         home_pos = find_pos(boxscore['homePitchers'])
         if home_pos:
             return ('Home', home_pos)
+        away_pos = find_pos(boxscore['awayPitchers'])
+        if away_pos:
+            return ('Away', away_pos)
+
     return ("Away" if winner == "Home" else "Home", None)
 
 
@@ -224,7 +231,7 @@ start_date = start.strftime('%m/%d/%Y')
 
 games = statsapi.schedule(start_date=start_date, end_date=today)
 filtered_games = []
-# pdb.set_trace()
+pdb.set_trace()
 
 for game in games:
     if game['status'] == 'Final':
