@@ -52,15 +52,18 @@ while True:
     dt = datetime.now(pacific_time)
     today = dt.strftime('%m/%d/%Y')
 
-    games_today = statsapi.schedule(start_date=today, end_date=today)
-    for g in games_today:
-        if g['status'] == 'In Progress' and g['game_id'] not in already_notified_games:
-            game = parse_game(g)
-            if is_blowout(game):
-                already_notified_games.add(g['game_id'])
-                send_email(game)
-            else:
-                print('non blowout', game['inning'], 'score', game['home_score'], game['away_score'])
+    try:
+        games_today = statsapi.schedule(start_date=today, end_date=today)
+        for g in games_today:
+            if g['status'] == 'In Progress' and g['game_id'] not in already_notified_games:
+                game = parse_game(g)
+                if is_blowout(game):
+                    already_notified_games.add(g['game_id'])
+                    send_email(game)
+                else:
+                    print('non blowout', game['inning'], 'score', game['home_score'], game['away_score'])
+    except:
+        print('network error')
 
     if datetime.now() > already_notified_reset_date:
         already_notified_games.clear()
