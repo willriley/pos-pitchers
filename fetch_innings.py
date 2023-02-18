@@ -1,11 +1,10 @@
-from concurrent.futures import ThreadPoolExecutor
 import statsapi
-import argparse
+import csv
 import pprint
 from datetime import datetime, timedelta
 from dataclasses import dataclass
-import csv
 from threading import Lock
+from concurrent.futures import ThreadPoolExecutor
 
 # TODO(joshbaum): Include innings where POS came in after an out had been made.
 # TODO(joshbaum): Fix to include where POS starts an inning but has already made an out in the game.
@@ -83,17 +82,10 @@ def parse_line(linescore, last_inning):
 
 
 def getGames():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-d', '--days', type=int, default=30)
-    parsed_args = parser.parse_args()
-
-    now = datetime(2022, 11, 1)
-    today = now.strftime('%m/%d/%Y')
-
-    start = now - timedelta(days=parsed_args.days)
-    start_date = start.strftime('%m/%d/%Y')
-
-    return statsapi.schedule(start_date=start_date, end_date=today)
+    end_of_season = datetime(2022, 11, 1)
+    start_of_season = end_of_season - timedelta(days=240)
+    return statsapi.schedule(
+        start_date=start_of_season.strftime('%m/%d/%Y'), end_date=end_of_season.strftime('%m/%d/%Y'))
 
 
 def getLinescore(game):
