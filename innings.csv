@@ -1,18 +1,18 @@
 game_id,date,home,away,inning,is_top,is_winning_team_batting,pre_half_score_diff,runs_scored,pos_started_inning
-662021,2022-04-07,St. Louis Cardinals,Pittsburgh Pirates,9,True,False,9,0,False
 661041,2022-04-08,Los Angeles Angels,Houston Astros,8,True,True,10,0,False
 661041,2022-04-08,Los Angeles Angels,Houston Astros,8,False,False,10,3,False
 661041,2022-04-08,Los Angeles Angels,Houston Astros,9,False,False,8,1,False
+662021,2022-04-07,St. Louis Cardinals,Pittsburgh Pirates,9,True,False,9,0,False
 663205,2022-04-09,Chicago Cubs,Milwaukee Brewers,8,True,False,9,0,False
 663205,2022-04-09,Chicago Cubs,Milwaukee Brewers,9,True,False,9,0,False
 663205,2022-04-09,Chicago Cubs,Milwaukee Brewers,8,False,True,9,0,False
+661916,2022-04-10,Tampa Bay Rays,Baltimore Orioles,8,True,False,8,0,False
+661916,2022-04-10,Tampa Bay Rays,Baltimore Orioles,9,True,False,8,0,False
+661916,2022-04-10,Tampa Bay Rays,Baltimore Orioles,8,False,True,8,0,False
 662887,2022-04-10,Detroit Tigers,Chicago White Sox,8,True,True,8,0,False
 662887,2022-04-10,Detroit Tigers,Chicago White Sox,9,True,True,8,1,False
 662887,2022-04-10,Detroit Tigers,Chicago White Sox,8,False,False,8,0,False
 662887,2022-04-10,Detroit Tigers,Chicago White Sox,9,False,False,9,0,False
-661916,2022-04-10,Tampa Bay Rays,Baltimore Orioles,8,True,False,8,0,False
-661916,2022-04-10,Tampa Bay Rays,Baltimore Orioles,9,True,False,8,0,False
-661916,2022-04-10,Tampa Bay Rays,Baltimore Orioles,8,False,True,8,0,False
 662755,2022-04-10,Kansas City Royals,Cleveland Guardians,8,True,True,14,1,False
 662755,2022-04-10,Kansas City Royals,Cleveland Guardians,9,True,True,15,0,False
 662755,2022-04-10,Kansas City Royals,Cleveland Guardians,8,False,False,15,0,False
@@ -21,22 +21,22 @@ game_id,date,home,away,inning,is_top,is_winning_team_batting,pre_half_score_diff
 663395,2022-04-10,Arizona Diamondbacks,San Diego Padres,9,True,True,9,0,True
 663395,2022-04-10,Arizona Diamondbacks,San Diego Padres,8,False,False,9,0,False
 663395,2022-04-10,Arizona Diamondbacks,San Diego Padres,9,False,False,9,4,False
-661572,2022-04-11,Atlanta Braves,Washington Nationals,9,True,True,10,0,False
-661572,2022-04-11,Atlanta Braves,Washington Nationals,8,False,False,10,0,False
-661572,2022-04-11,Atlanta Braves,Washington Nationals,9,False,False,10,1,False
 661915,2022-04-11,Tampa Bay Rays,Oakland Athletics,8,True,True,8,0,True
 661915,2022-04-11,Tampa Bay Rays,Oakland Athletics,8,False,False,8,1,False
 661915,2022-04-11,Tampa Bay Rays,Oakland Athletics,9,False,False,11,0,False
+661572,2022-04-11,Atlanta Braves,Washington Nationals,9,True,True,10,0,False
+661572,2022-04-11,Atlanta Braves,Washington Nationals,8,False,False,10,0,False
+661572,2022-04-11,Atlanta Braves,Washington Nationals,9,False,False,10,1,False
 661571,2022-04-12,Atlanta Braves,Washington Nationals,8,True,False,10,0,False
 661571,2022-04-12,Atlanta Braves,Washington Nationals,9,True,False,13,1,False
 661571,2022-04-12,Atlanta Braves,Washington Nationals,8,False,True,10,3,True
 662104,2022-04-12,San Francisco Giants,San Diego Padres,8,True,False,9,0,False
 662104,2022-04-12,San Francisco Giants,San Diego Padres,9,True,False,11,0,False
 662104,2022-04-12,San Francisco Giants,San Diego Padres,8,False,True,9,2,True
-661993,2022-04-14,Texas Rangers,Los Angeles Angels,8,True,False,8,2,False
 662237,2022-04-14,San Diego Padres,Atlanta Braves,8,True,False,9,0,False
 662237,2022-04-14,San Diego Padres,Atlanta Braves,9,True,False,12,1,False
 662237,2022-04-14,San Diego Padres,Atlanta Braves,8,False,True,9,3,False
+661993,2022-04-14,Texas Rangers,Los Angeles Angels,8,True,False,8,2,False
 662485,2022-04-15,New York Mets,Arizona Diamondbacks,9,True,False,9,2,False
 661267,2022-04-15,Milwaukee Brewers,St. Louis Cardinals,9,False,False,9,0,False
 662192,2022-04-15,Seattle Mariners,Houston Astros,8,True,False,8,0,False
@@ -54,17 +54,17 @@ game_id,date,home,away,inning,is_top,is_winning_team_batting,pre_half_score_diff
 662560,2022-04-20,Washington Nationals,Arizona Diamondbacks,9,True,True,9,0,False
 662560,2022-04-20,Washington Nationals,Arizona Diamondbacks,8,False,False,9,0,False
 662560,2022-04-20,Washington Nationals,Arizona Diamondbacks,9,False,False,9,0,False
-662848,2022-04-23,Detroit Tigers,Colorado Rockies,8,True,False,13,0,False
-662848,2022-04-23,Detroit Tigers,Colorado Rockies,9,True,False,13,0,False
-662848,2022-04-23,Detroit Tigers,Colorado Rockies,8,False,True,13,0,False
 663144,2022-04-23,Chicago Cubs,Pittsburgh Pirates,8,True,False,17,0,False
 663144,2022-04-23,Chicago Cubs,Pittsburgh Pirates,9,True,False,21,0,False
 663144,2022-04-23,Chicago Cubs,Pittsburgh Pirates,8,False,True,17,4,True
+662848,2022-04-23,Detroit Tigers,Colorado Rockies,8,True,False,13,0,False
+662848,2022-04-23,Detroit Tigers,Colorado Rockies,9,True,False,13,0,False
+662848,2022-04-23,Detroit Tigers,Colorado Rockies,8,False,True,13,0,False
 661752,2022-04-23,Minnesota Twins,Chicago White Sox,8,True,False,8,1,False
+662539,2022-04-24,Washington Nationals,San Francisco Giants,9,False,False,9,0,False
 661317,2022-04-24,New York Yankees,Cleveland Guardians,8,True,False,8,0,False
 661317,2022-04-24,New York Yankees,Cleveland Guardians,9,True,False,10,2,False
 661317,2022-04-24,New York Yankees,Cleveland Guardians,8,False,True,8,2,False
-662539,2022-04-24,Washington Nationals,San Francisco Giants,9,False,False,9,0,False
 662274,2022-04-24,San Diego Padres,Los Angeles Dodgers,8,True,True,8,0,False
 662274,2022-04-24,San Diego Padres,Los Angeles Dodgers,9,True,True,8,0,False
 662274,2022-04-24,San Diego Padres,Los Angeles Dodgers,8,False,False,8,0,False
@@ -85,10 +85,10 @@ game_id,date,home,away,inning,is_top,is_winning_team_batting,pre_half_score_diff
 662081,2022-04-29,San Francisco Giants,Washington Nationals,9,False,False,10,0,False
 661906,2022-04-30,Tampa Bay Rays,Minnesota Twins,9,False,False,8,0,False
 661208,2022-04-30,Milwaukee Brewers,Chicago Cubs,9,True,False,8,0,False
-661905,2022-05-01,Tampa Bay Rays,Minnesota Twins,8,False,False,8,2,False
 663363,2022-05-01,Baltimore Orioles,Boston Red Sox,8,True,False,8,0,False
 663363,2022-05-01,Baltimore Orioles,Boston Red Sox,9,True,False,8,4,False
 663363,2022-05-01,Baltimore Orioles,Boston Red Sox,8,False,True,8,0,True
+661905,2022-05-01,Tampa Bay Rays,Minnesota Twins,8,False,False,8,2,False
 663007,2022-05-01,Colorado Rockies,Cincinnati Reds,8,True,False,8,0,False
 663007,2022-05-01,Colorado Rockies,Cincinnati Reds,9,True,False,9,0,False
 663007,2022-05-01,Colorado Rockies,Cincinnati Reds,8,False,True,8,1,False
@@ -125,8 +125,8 @@ game_id,date,home,away,inning,is_top,is_winning_team_batting,pre_half_score_diff
 663416,2022-05-10,Los Angeles Angels,Tampa Bay Rays,8,False,True,8,4,True
 662096,2022-05-10,San Francisco Giants,Colorado Rockies,9,True,False,8,1,False
 663074,2022-05-11,Cincinnati Reds,Milwaukee Brewers,9,True,False,9,6,False
-663358,2022-05-11,Arizona Diamondbacks,Miami Marlins,9,False,False,8,0,False
 662873,2022-05-11,Detroit Tigers,Oakland Athletics,9,False,False,9,0,False
+663358,2022-05-11,Arizona Diamondbacks,Miami Marlins,9,False,False,8,0,False
 661702,2022-05-12,Minnesota Twins,Houston Astros,8,True,True,8,0,False
 661702,2022-05-12,Minnesota Twins,Houston Astros,9,True,True,8,0,True
 661702,2022-05-12,Minnesota Twins,Houston Astros,8,False,False,8,0,False
@@ -137,9 +137,9 @@ game_id,date,home,away,inning,is_top,is_winning_team_batting,pre_half_score_diff
 662399,2022-05-14,Oakland Athletics,Los Angeles Angels,9,True,True,8,0,False
 662399,2022-05-14,Oakland Athletics,Los Angeles Angels,8,False,False,8,0,False
 662399,2022-05-14,Oakland Athletics,Los Angeles Angels,9,False,False,8,0,False
-662528,2022-05-15,Washington Nationals,Houston Astros,9,False,False,8,0,False
-661147,2022-05-14,Texas Rangers,Boston Red Sox,9,False,False,8,0,False
 662547,2022-05-14,Washington Nationals,Houston Astros,8,True,False,9,2,False
+661147,2022-05-14,Texas Rangers,Boston Red Sox,9,False,False,8,0,False
+662528,2022-05-15,Washington Nationals,Houston Astros,9,False,False,8,0,False
 661984,2022-05-15,St. Louis Cardinals,San Francisco Giants,8,True,False,13,0,False
 661984,2022-05-15,St. Louis Cardinals,San Francisco Giants,9,True,False,13,4,True
 661984,2022-05-15,St. Louis Cardinals,San Francisco Giants,8,False,True,13,0,False
@@ -163,14 +163,14 @@ game_id,date,home,away,inning,is_top,is_winning_team_batting,pre_half_score_diff
 662479,2022-05-22,Pittsburgh Pirates,St. Louis Cardinals,9,True,True,13,5,True
 662479,2022-05-22,Pittsburgh Pirates,St. Louis Cardinals,8,False,False,13,0,False
 662479,2022-05-22,Pittsburgh Pirates,St. Louis Cardinals,9,False,False,18,4,True
-662076,2022-05-22,San Francisco Giants,San Diego Padres,8,True,True,9,0,True
-662076,2022-05-22,San Francisco Giants,San Diego Padres,9,True,True,9,0,False
-662076,2022-05-22,San Francisco Giants,San Diego Padres,8,False,False,9,0,False
-662076,2022-05-22,San Francisco Giants,San Diego Padres,9,False,False,9,0,False
 662524,2022-05-23,Washington Nationals,Los Angeles Dodgers,8,True,True,10,0,False
 662524,2022-05-23,Washington Nationals,Los Angeles Dodgers,9,True,True,10,0,False
 662524,2022-05-23,Washington Nationals,Los Angeles Dodgers,8,False,False,10,0,False
 662524,2022-05-23,Washington Nationals,Los Angeles Dodgers,9,False,False,10,1,False
+662076,2022-05-22,San Francisco Giants,San Diego Padres,8,True,True,9,0,True
+662076,2022-05-22,San Francisco Giants,San Diego Padres,9,True,True,9,0,False
+662076,2022-05-22,San Francisco Giants,San Diego Padres,8,False,False,9,0,False
+662076,2022-05-22,San Francisco Giants,San Diego Padres,9,False,False,9,0,False
 662075,2022-05-23,San Francisco Giants,New York Mets,9,True,True,8,3,True
 662075,2022-05-23,San Francisco Giants,New York Mets,8,False,False,8,0,False
 662075,2022-05-23,San Francisco Giants,New York Mets,9,False,False,11,1,False
@@ -195,12 +195,12 @@ game_id,date,home,away,inning,is_top,is_winning_team_batting,pre_half_score_diff
 661990,2022-05-29,St. Louis Cardinals,Milwaukee Brewers,8,False,False,8,0,False
 661990,2022-05-29,St. Louis Cardinals,Milwaukee Brewers,9,False,False,8,0,False
 663298,2022-05-30,Boston Red Sox,Baltimore Orioles,9,False,False,10,0,False
-662545,2022-05-30,New York Mets,Washington Nationals,9,True,False,8,0,False
+661331,2022-05-31,New York Yankees,Los Angeles Angels,9,True,False,8,0,False
 661075,2022-05-31,Baltimore Orioles,Seattle Mariners,8,True,True,9,0,False
 661075,2022-05-31,Baltimore Orioles,Seattle Mariners,9,True,True,9,1,True
 661075,2022-05-31,Baltimore Orioles,Seattle Mariners,8,False,False,9,0,False
 661075,2022-05-31,Baltimore Orioles,Seattle Mariners,9,False,False,10,0,False
-661331,2022-05-31,New York Yankees,Los Angeles Angels,9,True,False,8,0,False
+662545,2022-05-30,New York Mets,Washington Nationals,9,True,False,8,0,False
 662544,2022-05-31,New York Mets,Washington Nationals,8,True,False,10,0,False
 662544,2022-05-31,New York Mets,Washington Nationals,9,True,False,10,0,False
 662544,2022-05-31,New York Mets,Washington Nationals,8,False,True,10,0,False
@@ -209,13 +209,13 @@ game_id,date,home,away,inning,is_top,is_winning_team_batting,pre_half_score_diff
 662981,2022-06-01,Colorado Rockies,Miami Marlins,8,False,False,14,0,False
 662981,2022-06-01,Colorado Rockies,Miami Marlins,9,False,False,14,1,False
 663153,2022-06-03,Chicago Cubs,St. Louis Cardinals,9,False,False,9,0,False
+661642,2022-06-03,Philadelphia Phillies,Los Angeles Angels,8,True,False,10,0,False
+661642,2022-06-03,Philadelphia Phillies,Los Angeles Angels,9,True,False,10,0,False
+661642,2022-06-03,Philadelphia Phillies,Los Angeles Angels,8,False,True,10,0,False
 661396,2022-06-03,Miami Marlins,San Francisco Giants,8,True,True,12,0,False
 661396,2022-06-03,Miami Marlins,San Francisco Giants,9,True,True,12,0,True
 661396,2022-06-03,Miami Marlins,San Francisco Giants,8,False,False,12,0,False
 661396,2022-06-03,Miami Marlins,San Francisco Giants,9,False,False,12,3,True
-661642,2022-06-03,Philadelphia Phillies,Los Angeles Angels,8,True,False,10,0,False
-661642,2022-06-03,Philadelphia Phillies,Los Angeles Angels,9,True,False,10,0,False
-661642,2022-06-03,Philadelphia Phillies,Los Angeles Angels,8,False,True,10,0,False
 661318,2022-06-03,New York Yankees,Detroit Tigers,8,True,False,12,0,False
 661318,2022-06-03,New York Yankees,Detroit Tigers,9,True,False,13,0,False
 661318,2022-06-03,New York Yankees,Detroit Tigers,8,False,True,12,1,True
@@ -226,86 +226,86 @@ game_id,date,home,away,inning,is_top,is_winning_team_batting,pre_half_score_diff
 662613,2022-06-06,Kansas City Royals,Toronto Blue Jays,9,True,True,8,0,False
 662613,2022-06-06,Kansas City Royals,Toronto Blue Jays,8,False,False,8,0,False
 662613,2022-06-06,Kansas City Royals,Toronto Blue Jays,9,False,False,8,0,False
-663064,2022-06-07,Cincinnati Reds,Arizona Diamondbacks,8,True,False,9,5,False
-663064,2022-06-07,Cincinnati Reds,Arizona Diamondbacks,9,True,False,9,3,False
 661169,2022-06-07,Miami Marlins,Washington Nationals,8,True,False,11,1,False
 661169,2022-06-07,Miami Marlins,Washington Nationals,9,True,False,10,0,False
 661169,2022-06-07,Miami Marlins,Washington Nationals,8,False,True,10,0,False
-661515,2022-06-08,Atlanta Braves,Oakland Athletics,8,True,False,11,0,False
-661515,2022-06-08,Atlanta Braves,Oakland Athletics,9,True,False,11,0,False
-661515,2022-06-08,Atlanta Braves,Oakland Athletics,8,False,True,11,0,True
+663064,2022-06-07,Cincinnati Reds,Arizona Diamondbacks,8,True,False,9,5,False
+663064,2022-06-07,Cincinnati Reds,Arizona Diamondbacks,9,True,False,9,3,False
 661892,2022-06-08,Tampa Bay Rays,St. Louis Cardinals,8,True,False,8,0,False
 661892,2022-06-08,Tampa Bay Rays,St. Louis Cardinals,9,True,False,8,0,False
 661892,2022-06-08,Tampa Bay Rays,St. Louis Cardinals,8,False,True,8,0,True
+661515,2022-06-08,Atlanta Braves,Oakland Athletics,8,True,False,11,0,False
+661515,2022-06-08,Atlanta Braves,Oakland Athletics,9,True,False,11,0,False
+661515,2022-06-08,Atlanta Braves,Oakland Athletics,8,False,True,11,0,True
 661188,2022-06-08,Milwaukee Brewers,Philadelphia Phillies,9,False,False,10,0,False
 662223,2022-06-08,San Diego Padres,New York Mets,8,True,False,11,0,False
 662223,2022-06-08,San Diego Padres,New York Mets,9,True,False,11,0,False
 662223,2022-06-08,San Diego Padres,New York Mets,8,False,True,11,0,False
-662676,2022-06-10,Kansas City Royals,Baltimore Orioles,8,True,False,8,0,False
-662676,2022-06-10,Kansas City Royals,Baltimore Orioles,9,True,False,8,1,False
-662676,2022-06-10,Kansas City Royals,Baltimore Orioles,8,False,True,8,0,False
 662831,2022-06-10,Detroit Tigers,Toronto Blue Jays,8,True,True,10,0,False
 662831,2022-06-10,Detroit Tigers,Toronto Blue Jays,9,True,True,9,0,False
 662831,2022-06-10,Detroit Tigers,Toronto Blue Jays,8,False,False,10,1,False
 662831,2022-06-10,Detroit Tigers,Toronto Blue Jays,9,False,False,9,0,False
+662676,2022-06-10,Kansas City Royals,Baltimore Orioles,8,True,False,8,0,False
+662676,2022-06-10,Kansas City Royals,Baltimore Orioles,9,True,False,8,1,False
+662676,2022-06-10,Kansas City Royals,Baltimore Orioles,8,False,True,8,0,False
 662275,2022-06-10,San Diego Padres,Colorado Rockies,8,True,False,9,0,False
 662275,2022-06-10,San Diego Padres,Colorado Rockies,9,True,False,9,0,False
 662275,2022-06-10,San Diego Padres,Colorado Rockies,8,False,True,9,0,False
+661270,2022-06-12,New York Yankees,Chicago Cubs,8,True,False,13,0,False
+661270,2022-06-12,New York Yankees,Chicago Cubs,9,True,False,14,0,False
+661270,2022-06-12,New York Yankees,Chicago Cubs,8,False,True,13,1,True
+663412,2022-06-11,Los Angeles Angels,New York Mets,8,True,False,8,1,False
+663412,2022-06-11,Los Angeles Angels,New York Mets,9,True,False,9,4,False
 661276,2022-06-11,New York Yankees,Chicago Cubs,8,True,False,8,0,False
 661276,2022-06-11,New York Yankees,Chicago Cubs,9,True,False,8,0,False
 661276,2022-06-11,New York Yankees,Chicago Cubs,8,False,True,8,0,False
-663412,2022-06-11,Los Angeles Angels,New York Mets,8,True,False,8,1,False
-663412,2022-06-11,Los Angeles Angels,New York Mets,9,True,False,9,4,False
 661622,2022-06-12,Philadelphia Phillies,Arizona Diamondbacks,8,True,True,9,2,False
 661622,2022-06-12,Philadelphia Phillies,Arizona Diamondbacks,9,True,True,11,1,True
 661622,2022-06-12,Philadelphia Phillies,Arizona Diamondbacks,8,False,False,11,0,False
 661622,2022-06-12,Philadelphia Phillies,Arizona Diamondbacks,9,False,False,12,0,False
-661270,2022-06-12,New York Yankees,Chicago Cubs,8,True,False,13,0,False
-661270,2022-06-12,New York Yankees,Chicago Cubs,9,True,False,14,0,False
-661270,2022-06-12,New York Yankees,Chicago Cubs,8,False,True,13,1,True
-661746,2022-06-13,Toronto Blue Jays,Baltimore Orioles,8,True,False,9,0,False
-661746,2022-06-13,Toronto Blue Jays,Baltimore Orioles,9,True,False,10,0,False
-661746,2022-06-13,Toronto Blue Jays,Baltimore Orioles,8,False,True,9,1,False
 661973,2022-06-14,St. Louis Cardinals,Pittsburgh Pirates,8,True,False,8,0,False
 661973,2022-06-14,St. Louis Cardinals,Pittsburgh Pirates,9,True,False,8,0,False
 661973,2022-06-14,St. Louis Cardinals,Pittsburgh Pirates,8,False,True,8,0,False
+661746,2022-06-13,Toronto Blue Jays,Baltimore Orioles,8,True,False,9,0,False
+661746,2022-06-13,Toronto Blue Jays,Baltimore Orioles,9,True,False,10,0,False
+661746,2022-06-13,Toronto Blue Jays,Baltimore Orioles,8,False,True,9,1,False
 662883,2022-06-15,Detroit Tigers,Chicago White Sox,8,True,True,11,1,True
 662883,2022-06-15,Detroit Tigers,Chicago White Sox,9,True,True,12,1,True
 662883,2022-06-15,Detroit Tigers,Chicago White Sox,8,False,False,12,0,False
 662883,2022-06-15,Detroit Tigers,Chicago White Sox,9,False,False,13,0,False
+663235,2022-06-15,Boston Red Sox,Oakland Athletics,9,True,False,9,0,False
 662480,2022-06-15,New York Mets,Milwaukee Brewers,8,True,True,8,0,False
 662480,2022-06-15,New York Mets,Milwaukee Brewers,9,True,True,8,0,False
 662480,2022-06-15,New York Mets,Milwaukee Brewers,8,False,False,8,0,False
 662480,2022-06-15,New York Mets,Milwaukee Brewers,9,False,False,8,0,False
-663155,2022-06-15,Chicago Cubs,San Diego Padres,8,True,True,11,0,False
-663155,2022-06-15,Chicago Cubs,San Diego Padres,9,True,True,11,3,True
-663155,2022-06-15,Chicago Cubs,San Diego Padres,8,False,False,11,0,False
-663155,2022-06-15,Chicago Cubs,San Diego Padres,9,False,False,14,0,False
-663235,2022-06-15,Boston Red Sox,Oakland Athletics,9,True,False,9,0,False
 661743,2022-06-16,Toronto Blue Jays,Baltimore Orioles,8,True,True,8,1,False
 661743,2022-06-16,Toronto Blue Jays,Baltimore Orioles,9,True,True,8,0,False
 661743,2022-06-16,Toronto Blue Jays,Baltimore Orioles,8,False,False,9,1,False
 661743,2022-06-16,Toronto Blue Jays,Baltimore Orioles,9,False,False,8,0,False
+663155,2022-06-15,Chicago Cubs,San Diego Padres,8,True,True,11,0,False
+663155,2022-06-15,Chicago Cubs,San Diego Padres,9,True,True,11,3,True
+663155,2022-06-15,Chicago Cubs,San Diego Padres,8,False,False,11,0,False
+663155,2022-06-15,Chicago Cubs,San Diego Padres,9,False,False,14,0,False
 662501,2022-06-16,Washington Nationals,Philadelphia Phillies,8,True,True,8,1,False
 662501,2022-06-16,Washington Nationals,Philadelphia Phillies,9,True,True,9,0,True
 662501,2022-06-16,Washington Nationals,Philadelphia Phillies,8,False,False,9,0,False
 662501,2022-06-16,Washington Nationals,Philadelphia Phillies,9,False,False,9,0,False
+661742,2022-06-17,Toronto Blue Jays,New York Yankees,9,False,False,9,0,False
 662757,2022-06-17,Houston Astros,Chicago White Sox,8,True,False,10,0,False
 662757,2022-06-17,Houston Astros,Chicago White Sox,9,True,False,10,0,False
 662757,2022-06-17,Houston Astros,Chicago White Sox,8,False,True,10,0,False
-661742,2022-06-17,Toronto Blue Jays,New York Yankees,9,False,False,9,0,False
 662171,2022-06-17,Seattle Mariners,Los Angeles Angels,8,True,False,8,1,False
 662802,2022-06-18,Detroit Tigers,Texas Rangers,8,True,False,10,0,False
 662802,2022-06-18,Detroit Tigers,Texas Rangers,9,True,False,10,3,False
 662802,2022-06-18,Detroit Tigers,Texas Rangers,8,False,True,10,0,False
-663351,2022-06-18,Arizona Diamondbacks,Minnesota Twins,8,True,True,10,0,False
-663351,2022-06-18,Arizona Diamondbacks,Minnesota Twins,9,True,True,10,0,True
-663351,2022-06-18,Arizona Diamondbacks,Minnesota Twins,8,False,False,10,0,False
-663351,2022-06-18,Arizona Diamondbacks,Minnesota Twins,9,False,False,10,0,False
 663255,2022-06-18,Boston Red Sox,St. Louis Cardinals,8,True,True,8,0,False
 663255,2022-06-18,Boston Red Sox,St. Louis Cardinals,9,True,True,8,1,False
 663255,2022-06-18,Boston Red Sox,St. Louis Cardinals,8,False,False,8,0,False
 663255,2022-06-18,Boston Red Sox,St. Louis Cardinals,9,False,False,9,0,False
+663351,2022-06-18,Arizona Diamondbacks,Minnesota Twins,8,True,True,10,0,False
+663351,2022-06-18,Arizona Diamondbacks,Minnesota Twins,9,True,True,10,0,True
+663351,2022-06-18,Arizona Diamondbacks,Minnesota Twins,8,False,False,10,0,False
+663351,2022-06-18,Arizona Diamondbacks,Minnesota Twins,9,False,False,10,0,False
 661121,2022-06-20,Pittsburgh Pirates,Chicago Cubs,8,True,False,11,0,False
 661121,2022-06-20,Pittsburgh Pirates,Chicago Cubs,9,True,False,11,0,False
 661121,2022-06-20,Pittsburgh Pirates,Chicago Cubs,8,False,True,11,0,False
@@ -318,11 +318,11 @@ game_id,date,home,away,inning,is_top,is_winning_team_batting,pre_half_score_diff
 662359,2022-06-22,Oakland Athletics,Seattle Mariners,8,False,False,9,0,False
 662359,2022-06-22,Oakland Athletics,Seattle Mariners,9,False,False,9,0,False
 662083,2022-06-25,San Francisco Giants,Cincinnati Reds,8,True,False,8,1,False
+661968,2022-06-27,St. Louis Cardinals,Miami Marlins,9,True,False,9,0,False
 663016,2022-06-27,Cleveland Guardians,Minnesota Twins,8,True,True,9,0,False
 663016,2022-06-27,Cleveland Guardians,Minnesota Twins,9,True,True,9,2,True
 663016,2022-06-27,Cleveland Guardians,Minnesota Twins,8,False,False,9,0,False
 663016,2022-06-27,Cleveland Guardians,Minnesota Twins,9,False,False,11,1,False
-661968,2022-06-27,St. Louis Cardinals,Miami Marlins,9,True,False,9,0,False
 662521,2022-06-28,New York Mets,Houston Astros,8,True,True,9,0,False
 662521,2022-06-28,New York Mets,Houston Astros,9,True,True,9,0,False
 662521,2022-06-28,New York Mets,Houston Astros,8,False,False,9,0,False
@@ -332,11 +332,11 @@ game_id,date,home,away,inning,is_top,is_winning_team_batting,pre_half_score_diff
 661579,2022-06-30,Philadelphia Phillies,Atlanta Braves,8,False,True,8,2,True
 663199,2022-06-30,Chicago Cubs,Cincinnati Reds,8,True,False,8,2,False
 663199,2022-06-30,Chicago Cubs,Cincinnati Reds,9,True,False,11,3,False
-663038,2022-07-01,Cincinnati Reds,Atlanta Braves,9,False,False,8,0,False
 661104,2022-07-01,Pittsburgh Pirates,Milwaukee Brewers,8,True,True,8,8,False
 661104,2022-07-01,Pittsburgh Pirates,Milwaukee Brewers,9,True,True,15,2,True
 661104,2022-07-01,Pittsburgh Pirates,Milwaukee Brewers,8,False,False,16,1,False
 661104,2022-07-01,Pittsburgh Pirates,Milwaukee Brewers,9,False,False,17,0,True
+663038,2022-07-01,Cincinnati Reds,Atlanta Braves,9,False,False,8,0,False
 662964,2022-07-02,Cleveland Guardians,New York Yankees,9,False,False,9,0,False
 662890,2022-07-02,Houston Astros,Los Angeles Angels,8,True,False,8,0,False
 662890,2022-07-02,Houston Astros,Los Angeles Angels,9,True,False,8,0,False
@@ -376,13 +376,13 @@ game_id,date,home,away,inning,is_top,is_winning_team_batting,pre_half_score_diff
 662108,2022-07-12,San Francisco Giants,Arizona Diamondbacks,8,True,False,10,0,False
 662108,2022-07-12,San Francisco Giants,Arizona Diamondbacks,9,True,False,13,0,True
 662108,2022-07-12,San Francisco Giants,Arizona Diamondbacks,8,False,True,10,3,True
-661101,2022-07-14,Chicago Cubs,New York Mets,9,True,True,8,0,False
-661101,2022-07-14,Chicago Cubs,New York Mets,8,False,False,8,0,False
-661101,2022-07-14,Chicago Cubs,New York Mets,9,False,False,8,0,False
 661675,2022-07-14,Minnesota Twins,Chicago White Sox,8,True,True,8,0,False
 661675,2022-07-14,Minnesota Twins,Chicago White Sox,9,True,True,8,3,True
 661675,2022-07-14,Minnesota Twins,Chicago White Sox,8,False,False,8,0,False
 661675,2022-07-14,Minnesota Twins,Chicago White Sox,9,False,False,11,1,False
+661101,2022-07-14,Chicago Cubs,New York Mets,9,True,True,8,0,False
+661101,2022-07-14,Chicago Cubs,New York Mets,8,False,False,8,0,False
+661101,2022-07-14,Chicago Cubs,New York Mets,9,False,False,8,0,False
 661113,2022-07-15,Colorado Rockies,Pittsburgh Pirates,8,True,False,9,0,False
 661113,2022-07-15,Colorado Rockies,Pittsburgh Pirates,9,True,False,11,0,False
 661113,2022-07-15,Colorado Rockies,Pittsburgh Pirates,8,False,True,9,2,False
@@ -391,45 +391,45 @@ game_id,date,home,away,inning,is_top,is_winning_team_batting,pre_half_score_diff
 663385,2022-07-15,Los Angeles Angels,Los Angeles Dodgers,8,False,False,9,0,False
 663385,2022-07-15,Los Angeles Angels,Los Angeles Dodgers,9,False,False,9,1,False
 661966,2022-07-16,St. Louis Cardinals,Cincinnati Reds,9,True,False,8,0,False
-661359,2022-07-16,Miami Marlins,Philadelphia Phillies,9,True,True,10,0,False
-661359,2022-07-16,Miami Marlins,Philadelphia Phillies,8,False,False,10,0,False
-661359,2022-07-16,Miami Marlins,Philadelphia Phillies,9,False,False,10,0,False
 662952,2022-07-16,Cleveland Guardians,Detroit Tigers,8,True,False,10,0,False
 662952,2022-07-16,Cleveland Guardians,Detroit Tigers,9,True,False,10,0,False
 662952,2022-07-16,Cleveland Guardians,Detroit Tigers,8,False,True,10,0,True
 661259,2022-07-16,New York Yankees,Boston Red Sox,8,True,False,9,0,False
 661259,2022-07-16,New York Yankees,Boston Red Sox,9,True,False,13,0,False
 661259,2022-07-16,New York Yankees,Boston Red Sox,8,False,True,9,4,False
-661258,2022-07-17,New York Yankees,Boston Red Sox,8,True,False,11,0,False
-661258,2022-07-17,New York Yankees,Boston Red Sox,9,True,False,11,0,False
-661258,2022-07-17,New York Yankees,Boston Red Sox,8,False,True,11,0,False
+661359,2022-07-16,Miami Marlins,Philadelphia Phillies,9,True,True,10,0,False
+661359,2022-07-16,Miami Marlins,Philadelphia Phillies,8,False,False,10,0,False
+661359,2022-07-16,Miami Marlins,Philadelphia Phillies,9,False,False,10,0,False
 661672,2022-07-17,Minnesota Twins,Chicago White Sox,8,True,True,10,0,False
 661672,2022-07-17,Minnesota Twins,Chicago White Sox,9,True,True,10,1,False
 661672,2022-07-17,Minnesota Twins,Chicago White Sox,8,False,False,10,0,False
 661672,2022-07-17,Minnesota Twins,Chicago White Sox,9,False,False,11,0,False
+661258,2022-07-17,New York Yankees,Boston Red Sox,8,True,False,11,0,False
+661258,2022-07-17,New York Yankees,Boston Red Sox,9,True,False,11,0,False
+661258,2022-07-17,New York Yankees,Boston Red Sox,8,False,True,11,0,False
 661421,2022-07-21,Miami Marlins,Texas Rangers,9,False,False,8,0,False
-663306,2022-07-22,Arizona Diamondbacks,Washington Nationals,9,True,False,10,1,False
+661560,2022-07-22,Philadelphia Phillies,Chicago Cubs,9,True,True,9,5,True
+661560,2022-07-22,Philadelphia Phillies,Chicago Cubs,8,False,False,9,0,False
+661560,2022-07-22,Philadelphia Phillies,Chicago Cubs,9,False,False,14,1,False
 661504,2022-07-22,Atlanta Braves,Los Angeles Angels,9,True,False,8,1,False
+663306,2022-07-22,Arizona Diamondbacks,Washington Nationals,9,True,False,10,1,False
 663222,2022-07-22,Boston Red Sox,Toronto Blue Jays,8,True,True,22,0,False
 663222,2022-07-22,Boston Red Sox,Toronto Blue Jays,9,True,True,22,1,True
 663222,2022-07-22,Boston Red Sox,Toronto Blue Jays,8,False,False,22,0,False
 663222,2022-07-22,Boston Red Sox,Toronto Blue Jays,9,False,False,23,0,False
-661560,2022-07-22,Philadelphia Phillies,Chicago Cubs,9,True,True,9,5,True
-661560,2022-07-22,Philadelphia Phillies,Chicago Cubs,8,False,False,9,0,False
-661560,2022-07-22,Philadelphia Phillies,Chicago Cubs,9,False,False,14,1,False
-661201,2022-07-23,Milwaukee Brewers,Colorado Rockies,9,True,False,8,3,False
 661502,2022-07-24,Atlanta Braves,Los Angeles Angels,9,True,True,8,0,False
 661502,2022-07-24,Atlanta Braves,Los Angeles Angels,8,False,False,8,0,False
 661502,2022-07-24,Atlanta Braves,Los Angeles Angels,9,False,False,8,0,False
+661201,2022-07-23,Milwaukee Brewers,Colorado Rockies,9,True,False,8,3,False
 662901,2022-07-24,Detroit Tigers,Minnesota Twins,9,False,False,8,0,False
 662343,2022-07-24,Oakland Athletics,Texas Rangers,8,True,True,10,0,False
 662343,2022-07-24,Oakland Athletics,Texas Rangers,8,False,False,10,4,False
-663046,2022-07-25,Cincinnati Reds,Miami Marlins,8,True,False,9,0,False
-663046,2022-07-25,Cincinnati Reds,Miami Marlins,9,True,False,9,0,False
-663046,2022-07-25,Cincinnati Reds,Miami Marlins,8,False,True,9,0,True
 662809,2022-07-25,Detroit Tigers,San Diego Padres,8,True,False,8,0,False
 662809,2022-07-25,Detroit Tigers,San Diego Padres,9,True,False,8,0,False
 662809,2022-07-25,Detroit Tigers,San Diego Padres,8,False,True,8,0,False
+663046,2022-07-25,Cincinnati Reds,Miami Marlins,8,True,False,9,0,False
+663046,2022-07-25,Cincinnati Reds,Miami Marlins,9,True,False,9,0,False
+663046,2022-07-25,Cincinnati Reds,Miami Marlins,8,False,True,9,0,True
 661077,2022-07-28,Colorado Rockies,Los Angeles Dodgers,8,True,True,13,0,False
 661077,2022-07-28,Colorado Rockies,Los Angeles Dodgers,9,True,True,13,0,True
 661077,2022-07-28,Colorado Rockies,Los Angeles Dodgers,8,False,False,13,0,False
@@ -437,29 +437,29 @@ game_id,date,home,away,inning,is_top,is_winning_team_batting,pre_half_score_diff
 662268,2022-07-29,San Diego Padres,Minnesota Twins,8,True,False,9,0,False
 662268,2022-07-29,San Diego Padres,Minnesota Twins,9,True,False,9,0,False
 662268,2022-07-29,San Diego Padres,Minnesota Twins,8,False,True,9,0,True
+662250,2022-08-02,San Diego Padres,Colorado Rockies,9,True,False,8,0,False
 662745,2022-07-29,Houston Astros,Seattle Mariners,8,True,False,10,1,False
 662745,2022-07-29,Houston Astros,Seattle Mariners,9,True,False,10,0,False
 662745,2022-07-29,Houston Astros,Seattle Mariners,8,False,True,9,1,True
-662250,2022-08-02,San Diego Padres,Colorado Rockies,9,True,False,8,0,False
 661496,2022-08-02,Atlanta Braves,Philadelphia Phillies,8,True,False,9,0,False
 661496,2022-08-02,Atlanta Braves,Philadelphia Phillies,9,True,False,12,0,False
 661496,2022-08-02,Atlanta Braves,Philadelphia Phillies,8,False,True,9,3,False
+662244,2022-08-03,San Diego Padres,Colorado Rockies,8,True,False,8,0,False
+662244,2022-08-03,San Diego Padres,Colorado Rockies,9,True,False,8,0,False
+662244,2022-08-03,San Diego Padres,Colorado Rockies,8,False,True,8,0,False
 662552,2022-08-03,Washington Nationals,New York Mets,8,True,True,8,0,False
 662552,2022-08-03,Washington Nationals,New York Mets,9,True,True,8,1,False
 662552,2022-08-03,Washington Nationals,New York Mets,8,False,False,8,0,False
 662552,2022-08-03,Washington Nationals,New York Mets,9,False,False,9,5,False
-662244,2022-08-03,San Diego Padres,Colorado Rockies,8,True,False,8,0,False
-662244,2022-08-03,San Diego Padres,Colorado Rockies,9,True,False,8,0,False
-662244,2022-08-03,San Diego Padres,Colorado Rockies,8,False,True,8,0,False
 662564,2022-08-05,Los Angeles Dodgers,San Diego Padres,8,True,False,8,0,False
 662564,2022-08-05,Los Angeles Dodgers,San Diego Padres,9,True,False,8,1,False
 662564,2022-08-05,Los Angeles Dodgers,San Diego Padres,8,False,True,8,0,True
 662856,2022-08-06,Detroit Tigers,Tampa Bay Rays,9,True,False,8,0,False
-661558,2022-08-07,Philadelphia Phillies,Washington Nationals,9,True,False,12,0,False
-662648,2022-08-07,Kansas City Royals,Boston Red Sox,9,True,False,10,2,False
 661815,2022-08-06,Texas Rangers,Chicago White Sox,8,True,False,8,0,False
 661815,2022-08-06,Texas Rangers,Chicago White Sox,9,True,False,8,0,False
 661815,2022-08-06,Texas Rangers,Chicago White Sox,8,False,True,8,0,False
+661558,2022-08-07,Philadelphia Phillies,Washington Nationals,9,True,False,12,0,False
+662648,2022-08-07,Kansas City Royals,Boston Red Sox,9,True,False,10,2,False
 662979,2022-08-09,Colorado Rockies,St. Louis Cardinals,8,True,False,11,0,False
 662979,2022-08-09,Colorado Rockies,St. Louis Cardinals,9,True,False,11,0,False
 662979,2022-08-09,Colorado Rockies,St. Louis Cardinals,8,False,True,11,0,False
@@ -473,13 +473,13 @@ game_id,date,home,away,inning,is_top,is_winning_team_batting,pre_half_score_diff
 662551,2022-08-12,Washington Nationals,San Diego Padres,9,True,True,8,0,False
 662551,2022-08-12,Washington Nationals,San Diego Padres,8,False,False,8,0,False
 662551,2022-08-12,Washington Nationals,San Diego Padres,9,False,False,8,3,False
-662824,2022-08-13,Houston Astros,Oakland Athletics,8,True,False,8,0,False
-662824,2022-08-13,Houston Astros,Oakland Athletics,9,True,False,8,0,False
-662824,2022-08-13,Houston Astros,Oakland Athletics,8,False,True,8,0,False
 662670,2022-08-13,Kansas City Royals,Los Angeles Dodgers,8,True,True,8,0,False
 662670,2022-08-13,Kansas City Royals,Los Angeles Dodgers,9,True,True,8,2,True
 662670,2022-08-13,Kansas City Royals,Los Angeles Dodgers,8,False,False,8,0,False
 662670,2022-08-13,Kansas City Royals,Los Angeles Dodgers,9,False,False,10,0,True
+662824,2022-08-13,Houston Astros,Oakland Athletics,8,True,False,8,0,False
+662824,2022-08-13,Houston Astros,Oakland Athletics,9,True,False,8,0,False
+662824,2022-08-13,Houston Astros,Oakland Athletics,8,False,True,8,0,False
 661497,2022-08-15,Atlanta Braves,New York Mets,8,True,False,12,0,False
 661497,2022-08-15,Atlanta Braves,New York Mets,9,True,False,12,0,False
 661497,2022-08-15,Atlanta Braves,New York Mets,8,False,True,12,0,False
@@ -498,16 +498,16 @@ game_id,date,home,away,inning,is_top,is_winning_team_batting,pre_half_score_diff
 662341,2022-08-19,Oakland Athletics,Seattle Mariners,9,False,False,8,0,False
 662395,2022-08-20,Pittsburgh Pirates,Cincinnati Reds,9,False,False,9,0,False
 663291,2022-08-20,Arizona Diamondbacks,St. Louis Cardinals,9,False,False,9,0,False
+663113,2022-08-23,Chicago Cubs,St. Louis Cardinals,9,False,False,10,0,False
 661858,2022-08-23,Tampa Bay Rays,Los Angeles Angels,8,True,False,8,0,False
 661858,2022-08-23,Tampa Bay Rays,Los Angeles Angels,9,True,False,10,0,True
 661858,2022-08-23,Tampa Bay Rays,Los Angeles Angels,8,False,True,8,2,False
-663113,2022-08-23,Chicago Cubs,St. Louis Cardinals,9,False,False,10,0,False
-662877,2022-08-24,Colorado Rockies,Texas Rangers,9,True,True,8,4,False
-662877,2022-08-24,Colorado Rockies,Texas Rangers,8,False,False,8,0,False
-662877,2022-08-24,Colorado Rockies,Texas Rangers,9,False,False,12,0,False
 662371,2022-08-24,Pittsburgh Pirates,Atlanta Braves,9,True,True,14,0,False
 662371,2022-08-24,Pittsburgh Pirates,Atlanta Braves,8,False,False,14,0,False
 662371,2022-08-24,Pittsburgh Pirates,Atlanta Braves,9,False,False,14,2,False
+662877,2022-08-24,Colorado Rockies,Texas Rangers,9,True,True,8,4,False
+662877,2022-08-24,Colorado Rockies,Texas Rangers,8,False,False,8,0,False
+662877,2022-08-24,Colorado Rockies,Texas Rangers,9,False,False,12,0,False
 662605,2022-08-23,Los Angeles Dodgers,Milwaukee Brewers,9,True,False,9,0,True
 662604,2022-08-24,Los Angeles Dodgers,Milwaukee Brewers,8,True,False,8,0,False
 662604,2022-08-24,Los Angeles Dodgers,Milwaukee Brewers,9,True,False,8,2,True
@@ -542,22 +542,22 @@ game_id,date,home,away,inning,is_top,is_winning_team_batting,pre_half_score_diff
 663312,2022-08-31,Arizona Diamondbacks,Philadelphia Phillies,9,True,True,17,0,False
 663312,2022-08-31,Arizona Diamondbacks,Philadelphia Phillies,8,False,False,17,0,False
 663312,2022-08-31,Arizona Diamondbacks,Philadelphia Phillies,9,False,False,17,1,False
-662032,2022-09-02,San Francisco Giants,Philadelphia Phillies,8,True,False,12,0,False
-662032,2022-09-02,San Francisco Giants,Philadelphia Phillies,9,True,False,13,1,True
-662032,2022-09-02,San Francisco Giants,Philadelphia Phillies,8,False,True,12,1,True
+661855,2022-09-02,Tampa Bay Rays,New York Yankees,9,True,False,9,0,False
 663212,2022-09-02,Boston Red Sox,Texas Rangers,8,True,False,8,0,False
 663212,2022-09-02,Boston Red Sox,Texas Rangers,9,True,False,8,0,False
 663212,2022-09-02,Boston Red Sox,Texas Rangers,8,False,True,8,0,True
-661855,2022-09-02,Tampa Bay Rays,New York Yankees,9,True,False,9,0,False
+661920,2022-09-02,St. Louis Cardinals,Chicago Cubs,9,True,False,8,0,False
+662032,2022-09-02,San Francisco Giants,Philadelphia Phillies,8,True,False,12,0,False
+662032,2022-09-02,San Francisco Giants,Philadelphia Phillies,9,True,False,13,1,True
+662032,2022-09-02,San Francisco Giants,Philadelphia Phillies,8,False,True,12,1,True
 662803,2022-09-03,Detroit Tigers,Kansas City Royals,8,True,True,10,0,False
 662803,2022-09-03,Detroit Tigers,Kansas City Royals,9,True,True,10,0,True
 662803,2022-09-03,Detroit Tigers,Kansas City Royals,8,False,False,10,0,False
 662803,2022-09-03,Detroit Tigers,Kansas City Royals,9,False,False,10,0,False
-661920,2022-09-02,St. Louis Cardinals,Chicago Cubs,9,True,False,8,0,False
+661438,2022-09-03,Chicago White Sox,Minnesota Twins,9,True,False,13,0,False
 662597,2022-09-03,Los Angeles Dodgers,San Diego Padres,8,True,False,11,0,False
 662597,2022-09-03,Los Angeles Dodgers,San Diego Padres,9,True,False,11,0,True
 662597,2022-09-03,Los Angeles Dodgers,San Diego Padres,8,False,True,11,0,True
-661438,2022-09-03,Chicago White Sox,Minnesota Twins,9,True,False,13,0,False
 663108,2022-09-04,Cincinnati Reds,Colorado Rockies,8,True,False,10,0,False
 663108,2022-09-04,Cincinnati Reds,Colorado Rockies,9,True,False,10,0,False
 663108,2022-09-04,Cincinnati Reds,Colorado Rockies,8,False,True,10,0,False
@@ -577,16 +577,16 @@ game_id,date,home,away,inning,is_top,is_winning_team_batting,pre_half_score_diff
 662637,2022-09-09,Kansas City Royals,Detroit Tigers,9,True,True,8,1,False
 662637,2022-09-09,Kansas City Royals,Detroit Tigers,8,False,False,9,1,False
 662637,2022-09-09,Kansas City Royals,Detroit Tigers,9,False,False,9,1,False
-661323,2022-09-10,Miami Marlins,New York Mets,8,True,True,9,0,False
-661323,2022-09-10,Miami Marlins,New York Mets,9,True,True,8,0,False
-661323,2022-09-10,Miami Marlins,New York Mets,8,False,False,9,1,False
-661323,2022-09-10,Miami Marlins,New York Mets,9,False,False,8,0,False
 662322,2022-09-10,Oakland Athletics,Chicago White Sox,9,True,True,8,0,False
 662322,2022-09-10,Oakland Athletics,Chicago White Sox,8,False,False,8,0,False
 662322,2022-09-10,Oakland Athletics,Chicago White Sox,9,False,False,8,0,False
 661282,2022-09-10,New York Yankees,Tampa Bay Rays,8,True,False,8,2,False
 663455,2022-09-10,Baltimore Orioles,Boston Red Sox,8,False,False,8,1,False
 663455,2022-09-10,Baltimore Orioles,Boston Red Sox,9,False,False,13,0,False
+661323,2022-09-10,Miami Marlins,New York Mets,8,True,True,9,0,False
+661323,2022-09-10,Miami Marlins,New York Mets,9,True,True,8,0,False
+661323,2022-09-10,Miami Marlins,New York Mets,8,False,False,9,1,False
+661323,2022-09-10,Miami Marlins,New York Mets,9,False,False,8,0,False
 661083,2022-09-11,Houston Astros,Los Angeles Angels,9,True,False,9,1,False
 661848,2022-09-11,San Diego Padres,Los Angeles Dodgers,8,True,True,8,0,False
 661848,2022-09-11,San Diego Padres,Los Angeles Dodgers,9,True,True,8,1,True
@@ -637,20 +637,20 @@ game_id,date,home,away,inning,is_top,is_winning_team_batting,pre_half_score_diff
 661751,2022-09-30,Toronto Blue Jays,Boston Red Sox,8,True,False,8,0,False
 661751,2022-09-30,Toronto Blue Jays,Boston Red Sox,9,True,False,9,0,False
 661751,2022-09-30,Toronto Blue Jays,Boston Red Sox,8,False,True,8,1,False
-662572,2022-10-01,Washington Nationals,Philadelphia Phillies,9,True,False,9,0,False
-661098,2022-10-01,Washington Nationals,Philadelphia Phillies,8,True,True,8,0,False
-661098,2022-10-01,Washington Nationals,Philadelphia Phillies,9,True,True,8,0,True
-661098,2022-10-01,Washington Nationals,Philadelphia Phillies,8,False,False,8,0,False
-661098,2022-10-01,Washington Nationals,Philadelphia Phillies,9,False,False,8,2,False
 662596,2022-09-30,Los Angeles Dodgers,Colorado Rockies,8,True,False,9,0,False
 662596,2022-09-30,Los Angeles Dodgers,Colorado Rockies,9,True,False,10,1,True
 662596,2022-09-30,Los Angeles Dodgers,Colorado Rockies,8,False,True,9,1,False
 661217,2022-10-01,New York Yankees,Baltimore Orioles,8,True,False,8,0,False
 661217,2022-10-01,New York Yankees,Baltimore Orioles,9,True,False,8,0,False
 661217,2022-10-01,New York Yankees,Baltimore Orioles,8,False,True,8,0,False
+661098,2022-10-01,Washington Nationals,Philadelphia Phillies,8,True,True,8,0,False
+661098,2022-10-01,Washington Nationals,Philadelphia Phillies,9,True,True,8,0,True
+661098,2022-10-01,Washington Nationals,Philadelphia Phillies,8,False,False,8,0,False
+661098,2022-10-01,Washington Nationals,Philadelphia Phillies,9,False,False,8,2,False
+662572,2022-10-01,Washington Nationals,Philadelphia Phillies,9,True,False,9,0,False
+661736,2022-10-01,Toronto Blue Jays,Boston Red Sox,9,True,False,10,0,False
 661956,2022-10-01,St. Louis Cardinals,Pittsburgh Pirates,8,True,False,8,1,False
 661956,2022-10-01,St. Louis Cardinals,Pittsburgh Pirates,9,True,False,10,0,False
-661736,2022-10-01,Toronto Blue Jays,Boston Red Sox,9,True,False,10,0,False
 662087,2022-10-02,Seattle Mariners,Oakland Athletics,9,False,False,10,3,False
 661095,2022-10-04,New York Mets,Washington Nationals,8,True,False,8,0,False
 661095,2022-10-04,New York Mets,Washington Nationals,9,True,False,8,0,False

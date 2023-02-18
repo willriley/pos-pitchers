@@ -1,13 +1,12 @@
 import statsapi
 import csv
-import pprint
 from datetime import datetime, timedelta
 from dataclasses import dataclass
 from threading import Lock
 from concurrent.futures import ThreadPoolExecutor
 
-# TODO(joshbaum): Include innings where POS came in after an out had been made.
-# TODO(joshbaum): Fix to include where POS starts an inning but has already made an out in the game.
+# TODO(joshbaum): Include innings where POS starts an inning but also pitched in previous inning.
+# TODO(joshbaum): Include innings where POS came in after an out had been made by another pitcher in same inning???
 
 # GLOBAL VARIABLES
 
@@ -119,10 +118,10 @@ def processGamesAndLinescores():
             winner = 'Away'
 
         for inning in away_score_after.keys():
-            # We start tracking the score one inning before we care to.
+            # We start tracking the score one inning before we need to so we have the score.
             if inning == START_INNING:
                 continue
-            # Is it a blowout when the away team comes to bat in inning
+            # Is it a blowout when the away team comes to bat in inning?
             score_diff_before_half_inning = abs(
                 away_score_after[inning - 1] - home_score_after[inning - 1])
             if score_diff_before_half_inning >= RUN_THRESHOLD:
@@ -132,10 +131,11 @@ def processGamesAndLinescores():
                                                                       True, winner == 'Away', score_diff_before_half_inning, runs_scored)
 
         for inning in home_score_after.keys():
-            # We start tracking the score one inning before we care to. Also no last licks.
+            # We start tracking the score one inning before we need to. so we have the score.
+            # Also no last licks for home team who is winning.
             if inning == START_INNING or (inning == final_inning and winner == 'Home'):
                 continue
-            # Is it a blowout when the home team comes to bat in inning
+            # Is it a blowout when the home team comes to bat in inning?
             score_diff_before_half_inning = abs(
                 away_score_after[inning] - home_score_after[inning - 1])
             if score_diff_before_half_inning >= RUN_THRESHOLD:
