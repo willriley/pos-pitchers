@@ -5,17 +5,25 @@ import pprint
 from datetime import datetime, timedelta
 from dataclasses import dataclass
 import csv
-import sys
 from threading import Lock
+
+# TODO(joshbaum): Include innings where POS came in after an out had been made.
+# TODO(joshbaum): Fix to include where POS starts an inning but has already made an out in the game.
 
 # GLOBAL VARIABLES
 
 # map of (game_id, inning, is_top) -> InningData
 innings = {}
+
+# pair of a game and linescore
 games_and_linescores = []
+
 # map of game_id -> boxscore object
 boxscores = {}
+
+# used for multithreading IO calls and access to global variables
 lock = Lock()
+
 # I got the player IDs of any position player who pitched in 2022 from the statcast data.
 pos_pitchers = set([593643, 665019, 670768, 642165, 608348, 624503, 621433, 542194, 643524, 596117,
                     571976, 605612, 543281, 641914, 670712, 425877, 644374, 676391, 620443, 621011,
@@ -28,7 +36,7 @@ pos_pitchers = set([593643, 665019, 670768, 642165, 608348, 624503, 621433, 5421
 START_INNING = 7
 RUN_THRESHOLD = 8
 CSV_HEADERS = ['game_id', 'date', 'home', 'away', 'inning', 'is_top',
-               'is_winning_team_batting', 'pre_half_score_diff', 'runs_scored', 'did_pos_start']
+               'is_winning_team_batting', 'pre_half_score_diff', 'runs_scored', 'pos_started_inning']
 
 
 @dataclass
@@ -132,8 +140,8 @@ def processGamesAndLinescores():
                                                                       True, winner == 'Away', score_diff_before_half_inning, runs_scored)
 
         for inning in home_score_after.keys():
-            # We start tracking the score one inning before we care to.
-            if inning == START_INNING:
+            # We start tracking the score one inning before we care to. Also no last licks.
+            if inning == START_INNING or (inning == final_inning and winner == 'Home'):
                 continue
             # Is it a blowout when the home team comes to bat in inning
             score_diff_before_half_inning = abs(
@@ -155,10 +163,29 @@ def getBoxscore(game_id):
 def processBoxscoreForInningsForPos():
     for (game_id, num_inning, is_top) in innings.keys():
         boxscore = boxscores[game_id]
+
         # If the other team didn't pos at all, we can skip this game.
         if not teamHasAnyPos(boxscore, is_top):
             continue
-        # TODO(joshbaum): Process the boxscore to find out if the POS pitched in num_inning
+
+        outs_before_inning_starts = (num_inning - 1) * 3
+        outs_recorded = 0
+
+        # Note: the first entry is an instruction entry. The starter is the second entry.
+        pitcher_inning_data = boxscore['homePitchers' if is_top else 'awayPitchers'][1:]
+        pitcher_index = 0
+
+        while outs_recorded < outs_before_inning_starts and pitcher_index < len(pitcher_inning_data):
+            ip = pitcher_inning_data[pitcher_index]['ip'].split('.')
+            outs_recorded += int(ip[0]) * 3 + int(ip[1])
+            pitcher_index += 1
+
+        if outs_recorded < outs_before_inning_starts:
+            print("ERROR: Didn't reach pitcher - this should never happen")
+        elif outs_recorded == outs_before_inning_starts:
+            # A new pitcher started the inning we're looking for.
+            if pitcher_inning_data[pitcher_index]['personId'] in pos_pitchers:
+                innings[(game_id, num_inning, is_top)].pos_started = True
 
 
 def teamHasAnyPos(boxscore, is_top):
