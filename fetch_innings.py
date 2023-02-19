@@ -33,9 +33,9 @@ pos_pitchers = set([593643, 665019, 670768, 642165, 608348, 624503, 621433, 5421
 
 START_INNING = 7
 RUN_THRESHOLD = 8
-CSV_HEADERS = ['game_id', 'date', 'home', 'away', 'inning', 'is_top',
-               'is_winning_team_batting', 'pre_half_score_diff', 'runs_scored', 
-               'end_of_game_score_diff', 'pos_started_inning']
+CSV_HEADERS = ['game_id', 'date', 'home', 'away', 'inning', 'is_top_inning',
+               'is_winning_team_batting', 'pre_half_inning_score_diff', 'runs_scored_in_inning', 
+               'other_team_runs_scored_in_inning', 'end_of_game_score_diff', 'pos_started_inning']
 
 
 @dataclass
@@ -49,6 +49,7 @@ class InningData:
     winning_team_is_batting: bool = False
     score_diff_before_half_inning: int = 0
     runs_socred: int = 0
+    other_runs_scored_in_inning: int = 0
     end_of_game_score_diff: int = 0
     pos_started: bool = False
 
@@ -56,7 +57,7 @@ class InningData:
         """CSV row representation of this GameData object."""
         return [self.game_id, self.date, self.home_team, self.away_team, self.inning, 
                 self.is_top_inning, self.winning_team_is_batting, self.score_diff_before_half_inning, 
-                self.runs_socred, self.end_of_game_score_diff, self.pos_started]
+                self.runs_socred, self.other_runs_scored_in_inning, self.end_of_game_score_diff, self.pos_started]
 
 
 def parse_line(linescore, last_inning):
@@ -127,12 +128,12 @@ def processGamesAndLinescores():
             score_diff_before_half_inning = abs(
                 away_score_after[inning - 1] - home_score_after[inning - 1])
             if score_diff_before_half_inning >= RUN_THRESHOLD:
-                runs_scored = away_score_after[inning] - \
-                    away_score_after[inning - 1]
+                runs_scored = away_score_after[inning] - away_score_after[inning - 1]
+                other_runs_scored = home_score_after[inning] - home_score_after[inning - 1]
                 innings[(game['game_id'], inning, True)] = InningData(
                     game['game_id'], game['game_date'], game['home_name'], game['away_name'], 
                     inning, True, winner == 'Away', score_diff_before_half_inning, 
-                    runs_scored, abs(game['home_score'] - game['away_score']))
+                    runs_scored, other_runs_scored, abs(game['home_score'] - game['away_score']))
 
         for inning in home_score_after.keys():
             # We start tracking the score one inning before we need to. so we have the score.
@@ -143,12 +144,12 @@ def processGamesAndLinescores():
             score_diff_before_half_inning = abs(
                 away_score_after[inning] - home_score_after[inning - 1])
             if score_diff_before_half_inning >= RUN_THRESHOLD:
-                runs_scored = home_score_after[inning] - \
-                    home_score_after[inning - 1]
+                runs_scored = home_score_after[inning] - home_score_after[inning - 1]
+                other_runs_scored = away_score_after[inning] - away_score_after[inning - 1]
                 innings[(game['game_id'], inning, False)] = InningData(
                     game['game_id'], game['game_date'], game['home_name'], game['away_name'], 
                     inning, False, winner == 'Home', score_diff_before_half_inning, 
-                    runs_scored, abs(game['home_score'] - game['away_score']))
+                    runs_scored, other_runs_scored, abs(game['home_score'] - game['away_score']))
 
 
 def getBoxscore(game_id):
@@ -200,7 +201,9 @@ def outputInnings():
         writer.writerow(CSV_HEADERS)
 
         for inning in innings.values():
-            writer.writerow(inning.to_csv_row())
+            # Only output data for "real" POS opprotunity innings.
+            if (inning.inning == 8 and inning.is_top_inning == False and inning.winning_team_is_batting == True) or (inning.inning == 9 and inning.is_top_inning == True and inning.winning_team_is_batting == True):
+                writer.writerow(inning.to_csv_row())
 
 
 def main():
