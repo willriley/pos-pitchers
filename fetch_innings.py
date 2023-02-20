@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from threading import Lock
 from concurrent.futures import ThreadPoolExecutor
 
-# TODO(joshbaum): Include innings where POS starts an inning but also pitched in previous inning.
+# TODO(joshbaum): Include innings where POS starts an inning but also pitched in previous inning???
 # TODO(joshbaum): Include innings where POS came in after an out had been made by another pitcher in same inning???
 
 # GLOBAL VARIABLES
@@ -84,6 +84,7 @@ def parse_line(linescore, last_inning):
 
 
 def getGames():
+    # Can only get 1 season of data at a time
     end_of_season = datetime(2022, 11, 1)
     start_of_season = end_of_season - timedelta(days=240)
     return statsapi.schedule(
@@ -107,7 +108,7 @@ def processGamesAndLinescores():
         linescore = game_and_linescore[1]
 
         final_inning = game['current_inning']
-        # Rain / postponed games
+        # Discard postponed or rain-shortened games.
         if not final_inning or final_inning < 9:
             continue
 
@@ -202,7 +203,8 @@ def outputInnings():
 
         for inning in innings.values():
             # Only output data for "real" POS opprotunity innings.
-            if (inning.inning == 8 and inning.is_top_inning == False and inning.winning_team_is_batting == True) or (inning.inning == 9 and inning.is_top_inning == True and inning.winning_team_is_batting == True):
+            # if (inning.inning == 8 and inning.is_top_inning == False and inning.winning_team_is_batting == True) or (inning.inning == 9 and inning.is_top_inning == True and inning.winning_team_is_batting == True):
+            if (inning.inning == 8 and inning.is_top_inning == True and inning.winning_team_is_batting == False) or (inning.inning == 9 and inning.is_top_inning == True and inning.winning_team_is_batting == True):
                 writer.writerow(inning.to_csv_row())
 
 
